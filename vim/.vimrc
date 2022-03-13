@@ -7,7 +7,12 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin(expand('~/.vim/plugged'))
+" Color Schemes
 Plug 'arcticicestudio/nord-vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+
+" Other
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
@@ -26,13 +31,33 @@ Plug 'wincent/command-t', {
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'sansyrox/vim-python-virtualenv', { 'branch': 'main' }
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'Yggdroot/indentLine'
+Plug 'pedrohdz/vim-yaml-folds'
 call plug#end()
 
+syntax on
+
+" Color Scheme Settings
+set background=dark
+colorscheme embark
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+let g:lightline = { 'colorscheme': 'embark' }
+
+let g:palenight_terminal_italics=1
+let g:embark_terminal_italics = 1
+
+" Change comment color
+highlight Comment ctermfg=245
+highlight Identifir ctermfg=150
+
 " CoC Extensions
-let g:coc_global_extensions = ['coc-tsserver']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-yaml']
 
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -50,9 +75,6 @@ nmap <C-k> <Plug>(coc-diagnostic-next)
 
 let g:python3_host_prog='/usr/bin/python'
 
-syntax on
-colorscheme nord
-
 " Change comment color
 highlight Comment ctermfg=245
 highlight Identifir ctermfg=150
@@ -69,15 +91,14 @@ set encoding=utf-8
 " Set the encoding of files written
 set fileencoding=utf-8
 
-
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-autocmd Filetype go setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+set ts=4 sw=4 sts=4 expandtab
 " ts - show existing tab with 4 spaces width
 " sw - when indenting with '>', use 4 spaces width
 " sts - control <tab> and <bs> keys to match tabstop
 
-" Control all other files
-set shiftwidth=4
+let g:indentLine_char = '⦙'
+set foldlevelstart=20
 
 set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir

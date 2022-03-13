@@ -1,0 +1,38 @@
+{
+    "codeLens.enable": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "markdown",
+        "typescript",
+        "javascript",
+        "json"
+    ],
+    "languageserver": {
+        "terraform": {
+            "command": "terraform-lsp",
+            "filetypes": [
+              "terraform",
+              "tf"
+            ],
+            "initializationOptions": {},
+            "settings": {}
+        },
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": ["dockerfile"],
+            "args": ["--stdio"]
+        },
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"],
+            "initializationOptions": {
+                "usePlaceholders": true
+            }
+        }
+    },
+    "yaml.schemas": {
+        "kubernetes": "/*.yaml"
+    }
+}
+
