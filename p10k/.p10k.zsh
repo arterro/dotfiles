@@ -391,7 +391,9 @@
     local res
 
     case $VCS_STATUS_REMOTE_URL in
+      *gh-*)                   res+=$'\uF408 ';;
       *github.com*)            res+=$'\uF408 ';;
+      *bb-*)                   res+=$'\uF5A7 ';;
       *bitbucket.org*)         res+=$'\uF5A7 ';;
       *gitlab.com*)            res+=$'\uF296 ';;
       *)                       res+=$'\uF1D3 ';;
