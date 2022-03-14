@@ -31,8 +31,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export PATH=$PATH:$HOME/.local/bin
 
-export BRIGHTNESS
-
 #
 # Language
 #
@@ -73,7 +71,3 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
-
-[[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx $HOME/.config/X11/xinitrc -- vt1
-
-
