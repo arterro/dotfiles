@@ -24,3 +24,4 @@ export XDG_CACHE_HOME="$HOME/.cache"
 #**********
 
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.emacs.d/bin

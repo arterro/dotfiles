@@ -66,6 +66,11 @@ fi
 #***
 [[ ! -f $HOME/.p10k.zsh ]] || source ~/.p10k.zsh
 
+#***
+# kubectl completions
+#***
+source <(kubectl completion zsh)
+
 #***************
 # To Oraganize
 #***************

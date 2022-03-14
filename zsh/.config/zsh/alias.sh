@@ -8,3 +8,6 @@ alias aliasconfig='${EDITOR} $HOME/.config/zsh/alias.sh'
 alias helperconfig='${EDITOR} $HOME/.config/zsh/helper.sh'
 
 alias tmain='~/.tmux/tmux-bootstrap.sh arterro'
+
+alias k=kubectl
+compdef __start_kubectl k
