@@ -24,6 +24,12 @@ fi
 # GLOBAL SETTINGS
 #*****************
 
+#*** 
+# Load bash completion functions
+#***
+autoload -Uz +X compinit && compinit
+autoload -Uz +X bashcompinit && bashcompinit
+
 unsetopt CORRECT                    # Disable autocorrect guesses. Happens when typing a wrong
                                     # command that may look like an existing one.
 

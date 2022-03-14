@@ -17,9 +17,6 @@ function opwd() { op get item $1 | jq '.details.fields[] | (select(.designation=
 #***
 # Create note
 #***
-autoload bashcompinit
-bashcompinit
-
 _n() {
   local lis cur
   lis=$(find "${NOTES}" -name "*.md" | \
