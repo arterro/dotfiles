@@ -1,8 +1,8 @@
 #***
 # Filesearch
 #***
-function f() { find . -iname "*$1*" ${@:2} }
-function r() { grep "$1" ${@:2} -R . }
+function f() { find . -iname "*$1*" ${@:2}; }
+function r() { grep "$1" ${@:2} -R .; }
 
 #***
 # Create directory and enter it
@@ -12,7 +12,7 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 #***
 # Search 1Password for object
 #***
-function opwd() { op get item $1 | jq '.details.fields[] | (select(.designation=="username").value),(select(.designation=="password").value)' }
+function opwd() { op get item $1 | jq '.details.fields[] | (select(.designation=="username").value),(select(.designation=="password").value)'; }
 
 #***
 # Create note
