@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Arturo Delgado"
+      user-mail-address "adelgado@arter.ro")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -52,11 +52,6 @@
 ;; Only display the first two menu items on the dashboard menu
 (setq +doom-dashboard-menu-sections (cl-subseq +doom-dashboard-menu-sections 0 2))
 
-;; Don't align tags
-;; (setq org-tags-column 0)
-
-;; (setq org-src-fontify-natively t)
-
 ;; Remove TODO keywords from org-mode (it will still work in agenda)
 (set-ligatures! 'org-mode
     :alist '(("TODO " . "")
@@ -72,20 +67,31 @@
 ;; Hide signs like "~" or "_" or "*"
 (setq org-hide-emphasis-markers t)
 
+;; Make frame a bit larger than default sat startup
+(setq initial-frame-alist '((top . 1) (left . 1) (width . 143) (height . 55)))
+
 ;; Initial setup for org-mode
 (defun arterro/org-mode-setup ()
-  (org-indent-mode)
-  (org-adapt-indentation nil)
-  (variable-pitch-mode nil)
-  (visual-line-mode)
-  (arterro/org-mode-visual-fill))
+    (setq org-startup-indented t
+          org-pretty-entities t
+          org-hide-emphasis-markers t
+          org-indent-indentation-per-level 0
+          org-adapt-indentation nil
+          org-hide-leading-stars nil
+          org-indent-mode-turns-on-hiding-stars nil
+          org-cycle-separator-lines 1)
+        (customize-set-variable 'org-blank-before-new-entry 
+                        '((heading . nil)
+                          (plain-list-item . nil)))
+        (electric-indent-mode -1)
+        (arterro/visual-fill))
 
 ;; Centers document and sets page to a fixed width
-(defun arterro/org-mode-visual-fill()
-  (setq visual-fill-column-width 110
+(defun arterro/visual-fill ()
+    (setq visual-fill-column-width 110
         visual-fill-column-center-text t
         visual-fill-column-center-text t)
-  (visual-fill-column-mode 1))
+        (visual-fill-column-mode 1))
 
 (add-hook 'org-mode-hook 'arterro/org-mode-setup)
 
@@ -104,7 +110,11 @@
 
 (after! org-superstar
     ;; Remove stars from headings and customize header bullets
+    (set-face-attribute 'org-superstar-header-bullet nil :inherit 'fixed-pitched :height 180)
+    (setq org-superstar-leading-bullet "")
     (setq org-superstar-remove-leading-stars t)
+    ;(setq org-superstar-headline-bullets-list '("\u2001"))
+    ;;(setq org-superstar-headline-bullets-list '("\u200b"))
     (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
     
     ;; Enable custom bullets for TODO items
@@ -118,6 +128,20 @@
           ("DONE" "✔　")))
 (org-superstar-restart))
 
+;(map! :g "C-c n i"
+;      :desc "Org Roam Insert"
+;      "n i" #'org-roam-node-insert)
+
+;(after! org-roam
+;    (setq org-roam-completion-everywhere t)
+;    (map!  ("C-c n l" . org-roam-buffer-toggle)
+;           ("C-c n f" . org-roam-node-find)
+;           ("C-c n i" . org-roam-node-insert)
+;           :map org-mode-map
+;           ("C-M-i" . completion_at_point)))
+
+(setq org-roam-directory "~/notes/roam")
+
 ;; (org-babel-do-load-languages 
 ;;     'org-babel-load-languages
 ;;     (append org-babel-load-languages
@@ -128,8 +152,7 @@
 ;;       (yaml . t)
 ;;       )))
 
-;; Whenever you reconfigure a package, 
-;; Disable exit confirmationmake sure to wrap your config in an
+;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
 ;;   (after! PACKAGE
