@@ -126,7 +126,8 @@
           ("WAIT" "☕　")
           ("FAIL" "✘　")
           ("DONE" "✔　")))
-(org-superstar-restart))
+(org-superstar-restart)
+(org-mode-restart))
 
 ;(map! :g "C-c n i"
 ;      :desc "Org Roam Insert"
