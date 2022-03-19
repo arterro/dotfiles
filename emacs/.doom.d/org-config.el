@@ -1,76 +1,155 @@
-;; Remove TODO keywords from org-mode (it will still work in agenda)
-(set-ligatures! 'org-mode
-    :alist '(("TODO " . "")
-             ("NEXT " . "")
-             ("PROG " . "")
-             ("WAIT " . "")
-             ("DONE " . "")
-             ("FAIL " . "")))
+;; Org Configuration
+;; Majority of settings borrowed from https://github.com/hugcis/dotfiles
 
-;; Ellipsis configuration
-(setq org-ellipsis " ▼")
+;; ****************
+;; ORG-MODE
+;; ****************
 
-;; Hide signs like "~" or "_" or "*"
+(setq org-todo-keywords
+    (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+            (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"))))
+
+(setq-default org-enforce-todo-dependencies t)
+
+(with-eval-after-load 'org-superstar
+    (setq org-superstar-item-bullet-alist
+        '((?* . ?•)
+          (?+ . ?➤)
+          (?- . ?•)))
+    ;(setq org-superstar-headline-bullets-list '(?\s))
+    (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
+    (setq org-superstar-special-todo-items t)
+    (setq org-superstar-remove-leading-stars t)
+    (setq org-superstar-todo-bullet-alist
+        '(("TODO" . ?☐)
+          ("NEXT" . ?✒)
+          ("HOLD" . ?✰)
+          ("WAITING" . ?☕)
+          ("CANCELLED" . ?✘)
+          ("DONE" . ?✔)))
+    (org-superstar-restart))
+
+(setq org-ellipsis " ▼ ")
+
 (setq org-hide-emphasis-markers t)
 
-;; Make frame a bit larger than default sat startup
-(setq initial-frame-alist '((top . 1) (left . 1) (width . 143) (height . 55)))
+(defun arterro/buffer-face-mode-variable ()
+  "Set font to a variable width (proportional) fonts in current buffer"
+  (interactive)
+  (setq buffer-face-mode-face '(:family "Iosevka SS08"
+                                :height 150
+                                :width normal))
+  (buffer-face-mode))
 
-;; Initial setup for org-mode
-(defun arterro/org-mode-setup ()
-    (setq org-startup-indented t
-          org-pretty-entities t
-          org-hide-emphasis-markers t
-          org-indent-indentation-per-level 0
-          org-adapt-indentation nil
-          org-hide-leading-stars nil
-          org-indent-mode-turns-on-hiding-stars nil
-          org-cycle-separator-lines 1)
-        (customize-set-variable 'org-blank-before-new-entry 
-                        '((heading . nil)
-                          (plain-list-item . nil)))
-        (electric-indent-mode -1)
-        (arterro/visual-fill))
-
-;; Centers document and sets page to a fixed width
-(defun arterro/visual-fill ()
+;; Centers document and sets document body to a fixed width
+(defun arterro/set-visual-fill ()
     (setq visual-fill-column-width 110
-        visual-fill-column-center-text t
-        visual-fill-column-center-text t)
-        (visual-fill-column-mode 1))
+          visual-fill-column-center-text t
+          visual-fill-column-center-text t)
+    (visual-fill-column-mode 1))
 
-(add-hook 'org-mode-hook 'arterro/org-mode-setup)
+(defun arterro/set-general-faces-org ()
+    (org-indent-mode -1)
+    (setq line-spacing 0.1
+          org-pretty-entities t
+          org-startup-indented t
+          org-adapt-indentation nil)
+    (variable-pitch-mode t)
+    (mapc
+        (lambda (face) ;; Other fonts that require it are set to fixed-pitch.
+            (set-face-attribute face nil :inherit 'fixed-pitch))
+        (list 'org-block
+              'org-table
+              'org-verbatim
+              'org-block-begin-line
+              'org-block-end-line
+              'org-meta-line
+              'org-date
+              'org-drawer
+              'org-property-value
+              'org-special-keyword
+              'org-document-info-keyword))
+        (mapc ;; This sets the fonts to a smaller size
+            (lambda (face)
+                (set-face-attribute face nil :height 0.8))
+        (list 'org-document-info-keyword
+              'org-block-begin-line
+              'org-block-end-line
+              'org-meta-line
+              'org-drawer
+              'org-property-value)))
 
-(after! org-faces
-   (set-face-attribute 'org-document-title nil :font "Iosevka SS08" :weight 'bold :height 1.3)
+(defun arterro/set-specific-faces-org ()
+    (set-face-attribute 'org-code nil
+                        :inherit '(shadow fixed-pitch)) 
+    (set-face-attribute 'org-date nil
+                        :height 0.8)
+    (set-face-attribute 'org-document-title nil
+                        :height 0.9)
+    (set-face-attribute 'org-ellipsis nil
+                        :underline nil)
+    (set-face-attribute 'variable-pitch nil
+                        :family "Iosevka SS08" :height 1.1)
+   
+    ;; Set the font style for the headings
+    (dolist (face '((org-level-1 . 1.5)
+                    (org-level-2 . 1.4)
+                    (org-level-3 . 1.3)
+                    (org-level-4 . 1.2)
+                    (org-level-5 . 1.1)
+                    (org-level-6 . 1.1)
+                    (org-level-7 . 1.1)
+                    (org-level-8 . 1.1)))
 
-   (dolist (face '((org-level-1 . 1.5)
-                       (org-level-2 . 1.4)
-                       (org-level-3 . 1.3)
-                       (org-level-4 . 1.2)
-                       (org-level-5 . 1.1)
-                       (org-level-6 . 1.1)
-                       (org-level-7 . 1.1)
-                       (org-level-8 . 1.1)))
-         (set-face-attribute (car face) nil :font "Iosevka SS08" :weight 'medium :height (cdr face))))
+            (set-face-attribute (car face) nil 
+                                :font "ETBembo"
+                                :weight 'bold
+                                :height (cdr face))))
 
-(after! org-superstar
-    ;; Remove stars from headings and customize header bullets
-    (set-face-attribute 'org-superstar-header-bullet nil :inherit 'fixed-pitched :height 180)
-    (setq org-superstar-leading-bullet "")
-    (setq org-superstar-remove-leading-stars t)
-    ;(setq org-superstar-headline-bullets-list '("\u2001"))
-    ;;(setq org-superstar-headline-bullets-list '("\u200b"))
-    (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
-    
-    ;; Enable custom bullets for TODO items
-    (setq org-superstar-special-todo-items t)
-    (setq org-superstar-todo-bullet-alist
-        '(("TODO" "☐　")
-          ("NEXT" "✒　")
-          ("PROG" "✰　")
-          ("WAIT" "☕　")
-          ("FAIL" "✘　")
-          ("DONE" "✔　")))
-(org-superstar-restart)
-(org-mode-restart))
+(defun arterro/org-style ()
+  (arterro/set-general-faces-org)
+  (arterro/set-specific-faces-org)
+  (arterro/set-visual-fill))
+
+(add-hook 'org-mode-hook 'arterro/org-style)
+
+;; ****************
+;; ORG-MODE
+;; ****************
+
+;; V2 displays a warning message
+(setq org-roam-v2-ack t)
+(with-eval-after-load 'org-roam
+  (setq org-roam-directory (expand-file-name "~/notes/roam"))
+  (setq org-id-link-to-org-use-id t)
+  (setq org-roam-completion-system 'helm)
+  (add-to-list 'display-buffer-alist
+               '(("\\*org-roam\\*"
+                  (display-buffer-in-direction)
+                  (direction . right)
+                  (window-width . 0.33)
+                  (window-height . fit-window-to-buffer))))
+  (setq org-roam-capture-templates
+        '(("d" "default" plain "%?"
+           :immediate-finish t
+           :if-new (file+head "${slug}.org"
+                              "#+TITLE: ${title}\n#+hugo_lastmod: Time-stamp: <>\n\n")
+           :unnarrowed t)
+          ("t" "temp" plain "%?"
+           :if-new(file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                             "#+TITLE: ${title}\n#+hugo_lastmod: Time-stamp: <>\n\n")
+           :immediate-finish t
+           :unnarrowed t)
+          ("p" "private" plain "%?"
+           :if-new (file+head "${slug}-private.org"
+                              "#+TITLE: ${title}\n")
+           :immediate-finish t
+           :unnarrowed t)))
+  (setq org-roam-mode-sections
+        (list #'org-roam-backlinks-insert-section
+              #'org-roam-reflinks-insert-section
+              #'org-roam-unlinked-references-insert-section))
+  (org-roam-setup)
+  (org-roam-db-autosync-mode)
+  (setq org-roam-v2-ack t))
+(setq org-id-extra-files (org-roam--list-files org-roam-directory))

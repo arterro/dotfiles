@@ -21,7 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Iosevka SS08" :size 18 :weight 'regular))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18 :weight 'regular))
 ;      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 18))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -51,6 +51,9 @@
 
 ;; Only display the first two menu items on the dashboard menu
 (setq +doom-dashboard-menu-sections (cl-subseq +doom-dashboard-menu-sections 0 2))
+
+;; Make frame a bit larger than default sat startup
+(setq initial-frame-alist '((top . 1) (left . 1) (width . 143) (height . 55)))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -84,8 +87,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq org-roam-directory "~/notes/roam")
-
 (use-package! org-roam
     :config
     (setq org-roam-directory (expand-file-name "~/notes/roam"))
@@ -93,7 +94,27 @@
     (map! :leader
           :prefix "n"
           :desc "org-roam" "l" #'org-roam-buffer
-          :desc "org-roam-node-insert" "i" #'org-roam-node-insert)
+          :desc "org-roam-node-insert" "i" #'org-roam-node-insert
+          :desc "org-roam-node-find" "f" #'org-roam-node-find
+          :desc "org-roam-ref-find" "r" #'org-roam-ref-find
+          :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+          :desc "org-roam-capture" "c" #'org-roam-capture
+          :desc "org-roam-dailies-capture-today" "j" #'org-roam-dailies-capture-today)
     :after org)
 
-(after! org (load! "org-config-new.el"))
+(after! org (load! "org-config.el"))
+
+(use-package! org-ref
+  :config
+  (setq org-ref-csl-default-style (expand-file-name "~/custom-org-citeproc-export.csl"))
+  (setq org-cite-csl-locales-dir (expand-file-name "~/csl-locales/"))
+  :after org)
+
+(defun arterro/cleanup-text-mode ()
+  (setq fill-column 80)
+  (display-line-numbers-mode -1)
+  (display-fill-column-indicator-mode -1)
+  (setq isearch-regexp-lax-whitespace t)
+  (setq search-whitespace-regexp "[ \t\r\n]+"))
+
+(add-hook 'org-mode-hook #'arterro/cleanup-text-mode)
