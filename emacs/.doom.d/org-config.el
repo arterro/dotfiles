@@ -49,6 +49,7 @@
     (visual-fill-column-mode 1))
 
 (defun arterro/set-general-faces-org ()
+    (org-superstar-mode t)
     (org-indent-mode -1)
     (setq line-spacing 0.1
           org-pretty-entities t
@@ -114,7 +115,7 @@
 (add-hook 'org-mode-hook 'arterro/org-style)
 
 ;; ****************
-;; ORG-MODE
+;; ORG-ROAM
 ;; ****************
 
 ;; V2 displays a warning message
