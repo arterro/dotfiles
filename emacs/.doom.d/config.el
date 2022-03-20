@@ -89,7 +89,7 @@
 
 (use-package! org-roam
     :config
-    (setq org-roam-directory (expand-file-name "~/notes/roam"))
+    (setq org-roam-directory (expand-file-name "~/notes/tome"))
     :init
     (map! :leader
           :prefix "n"

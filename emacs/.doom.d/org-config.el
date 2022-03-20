@@ -90,7 +90,7 @@
     (set-face-attribute 'org-ellipsis nil
                         :underline nil)
     (set-face-attribute 'variable-pitch nil
-                        :family "Iosevka SS08" :height 1.1)
+                        :family "Iosevka SS08" :height 1.03)
    
     ;; Set the font style for the headings
     (dolist (face '((org-level-1 . 1.5)
@@ -114,6 +114,13 @@
 
 (add-hook 'org-mode-hook 'arterro/org-style)
 
+(setq 
+  time-stamp-active t
+  time-stamp-line-limit 10 ; Check first 10 buffer lines for "Time-stamp:"
+  time-stamp-format "%Y-%m-%d %H:%M:%S (%u)")
+
+(add-hook 'write-file-hooks 'time-stamp)
+
 ;; ****************
 ;; ORG-ROAM
 ;; ****************
@@ -121,7 +128,7 @@
 ;; V2 displays a warning message
 (setq org-roam-v2-ack t)
 (with-eval-after-load 'org-roam
-  (setq org-roam-directory (expand-file-name "~/notes/roam"))
+  (setq org-roam-directory (expand-file-name "~/notes/tome"))
   (setq org-id-link-to-org-use-id t)
   (setq org-roam-completion-system 'helm)
   (add-to-list 'display-buffer-alist
