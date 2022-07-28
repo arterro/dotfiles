@@ -66,6 +66,18 @@ fi
 #***
 [[ ! -f $HOME/.p10k.zsh ]] || source ~/.p10k.zsh
 
+#***************
+# PATHS
+#***************
+
+export GOPATH=$HOME/go
+
+path=($HOME/.local/bin $path)
+
+path+=(~/bin ~/.npm-global/bin)
+
+path=(/opt/homebrew/bin $path)
+
 #***
 # kubectl completions
 #***
@@ -75,12 +87,11 @@ source <(kubectl completion zsh)
 # To Oraganize
 #***************
 
-[ -e "$HOME/.dir_colors" ] && DIR_COLORS="$HOME/.dir_colors"
-eval "`dircolors -b $DIR_COLORS`"
-
 if [[ $- != *i* ]] ; then
 	return
 fi
+
+source ${HOME}/powerlevel10k/powerlevel10k.zsh-theme
 
 # Create npm-global Directory
 if [[ ! -d $HOME/.npm-global ]]; then
@@ -91,14 +102,9 @@ fi
 # Setup NVM for autoload
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-source /usr/share/nvm/init-nvm.sh
 
-export GOPATH=$HOME/go
-
-export PATH=$HOME/.local/bin:$PATH
 
 eval "$(direnv hook zsh)"
 
-export PATH=$PATH:~/bin:~/.npm-global/bin
-
-source ${HOME}/powerlevel10k/powerlevel10k.zsh-theme
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

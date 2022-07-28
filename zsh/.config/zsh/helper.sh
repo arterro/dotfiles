@@ -115,3 +115,44 @@ function prunebranches() {
     g checkout ${1} && g pull && g branch | grep -v "${1}" | xargs git branch -D
 }
 
+#***
+# Rename branch local and remotely
+#***
+function mvbranch() (
+    current_branch=$1
+
+    if [[ -z $1 ]] ; then
+        current_branch=$(git branch --show-current)
+    else
+        g checkout $1
+    fi
+
+    echo "Rename the branch: $current_branch?" 
+    
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) break;;
+            No ) return;;
+        esac
+    done
+
+    echo "\nNew branch name:"
+
+    read new_branch_name
+    
+    echo "\nRenaming branch from $current_branch to $new_branch_name..."
+
+    g branch -m $new_branch_name
+    g push origin -u $new_branch_name
+    g push origin :$current_branch
+)
+
+function rmbranch() {
+    if [[ -z $1 ]] ; then
+        echo "Please specify a branch name."
+        return 1
+    fi
+
+    g branch -d $1
+    g push origin :$1
+}

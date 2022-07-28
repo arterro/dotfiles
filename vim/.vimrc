@@ -8,7 +8,7 @@ endif
 
 call plug#begin(expand('~/.vim/plugged'))
 " Color Schemes
-Plug 'arcticicestudio/nord-vim'
+Plug 'arcticicestudio/nord-vim', { 'branch': 'main' }
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 
@@ -36,6 +36,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'Yggdroot/indentLine'
 Plug 'pedrohdz/vim-yaml-folds'
 call plug#end()
+
+set showcmd
+let mapleader = ","
 
 syntax on
 
