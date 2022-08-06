@@ -66,18 +66,6 @@ fi
 #***
 [[ ! -f $HOME/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#***************
-# PATHS
-#***************
-
-export GOPATH=$HOME/go
-
-path=($HOME/.local/bin $path)
-
-path+=(~/bin ~/.npm-global/bin)
-
-path=(/opt/homebrew/bin $path)
-
 #***
 # kubectl completions
 #***
@@ -105,6 +93,3 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 eval "$(direnv hook zsh)"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
