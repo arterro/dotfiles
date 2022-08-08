@@ -3,9 +3,8 @@
 #**********
 # ENVIRONMENT
 #**********
-
 export WORK=$HOME/work
-export GPG_TTY=$(tty)
+export GPG_TTY=$TTY
 export DOTFILES=$HOME/.dotfiles
 export NOTES=$HOME/notes
 
