@@ -60,7 +60,7 @@ highlight Comment ctermfg=245
 highlight Identifir ctermfg=150
 
 " CoC Extensions
-let g:coc_global_extensions = ['coc-tsserver', 'coc-yaml']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-yaml', 'coc-go']
 
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)
