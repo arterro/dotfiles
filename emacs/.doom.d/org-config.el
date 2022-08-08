@@ -51,6 +51,7 @@
 (defun arterro/set-general-faces-org ()
     (org-superstar-mode t)
     (org-indent-mode -1)
+    (company-mode -1)
     (setq line-spacing 0.1
           org-pretty-entities t
           org-startup-indented t

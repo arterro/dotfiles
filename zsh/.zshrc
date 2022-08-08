@@ -53,7 +53,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 #*** 
-# zsh - Custom paths/envs, helper functions and aliases
+# zsh - Custom helper functions and aliases
 #***
 if [[ -d $HOME/.config/zsh ]]; then
     for config in $HOME/.config/zsh/*; do
@@ -74,6 +74,7 @@ source <(kubectl completion zsh)
 #***************
 # To Oraganize
 #***************
+bindkey '^R' history-incremental-search-backward
 
 if [[ $- != *i* ]] ; then
 	return
@@ -88,8 +89,6 @@ if [[ ! -d $HOME/.npm-global ]]; then
 fi
 
 # Setup NVM for autoload
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 
 eval "$(direnv hook zsh)"
