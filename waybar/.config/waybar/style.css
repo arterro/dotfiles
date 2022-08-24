@@ -28,6 +28,7 @@
 * {
     font-size: 12px;
     border: 0;
+    border-radius: 0;
     font-family: "JetBrainsMono Nerd Font", "Font Awesome 5 Pro Solid", "Font Awesome 5 Brands";
     min-height: 0;
 }
@@ -45,39 +46,35 @@ window#waybar {
 
 #workspaces button {
     color: @text;
-    margin: 0 0 3px 0;
-    padding: 5px 10px;
+    margin: 5px 0;
+    padding: 3px 10px;
+    background: transparent;
+    border-radius: 15px;
+    border: 0;
+    transition: color 300ms ease-out, background 400ms ease-out;
 }
 
 #workspaces button.visible,
 #workspaces button.focused {
-    border-radius: 0;
     background: linear-gradient(90deg, @flamingo 10%, @lavender 100%);
     color: @surface0;
-    border-radius: 15px;
-    font-size: 8px;
-    padding: 3px 10px;
-    margin: 5px 0 8px 0;
+    transition: background 400ms ease-in;
 }
 
 #workspaces button:first-child {
     margin-left: 5px;
 }
 
-#workspaces button:hover, 
-#workspaces button.visible:hover,
-#workspaces button.focused:hover {
+#workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    border: 0;
-    border-radius: 0;
-    background: none;
 }
 
 #network,
 #pulseaudio,
 #backlight,
-#battery {
+#battery,
+#clock {
     background: @surface0;
     border-radius: 15px;
     color: @text;
@@ -87,10 +84,5 @@ window#waybar {
 }
 
 #clock {
-    background: @surface0;
-    border-radius: 15px;
-    color: @text;
-    font-weight: 500;
-    padding: 3px 10px;
     margin: 5px 6px 8px 0;
 }
