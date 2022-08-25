@@ -41,4 +41,9 @@ From the root of `~/.dotfiles`
 stow -R -d ./_deskmod -S sway -t $HOME
 ```
 
+Install the required packages
+```sh
+yay -Syu --needed --noconfirm - < ~/packages.txt
+```
+
 Log out and log back in and everything should be up and running as expected.
