@@ -39,9 +39,13 @@ window {
     margin: 0;
 }
 
+#input {
+    min-height: 0;
+}
+
 #outer-box {
-    padding: 10px;
-    margin: 10px 5px;
+    padding: 0 10px;
+    margin: 0 5px 10px;
 }
 
 #inner-box {
@@ -53,43 +57,33 @@ window {
     background: none;
 }
 
-#input {
-    background: @surface1;
-    border-radius: 20px;
-    color: @text;
-    padding: 3px 10px;
-    font-size: 14px;
-    margin-bottom: 20px;
-    border: 0;
+#input:focus {
+    background: @surface0;
 }
 
 #entry {
     color: @text;
-    padding: 5px 10px;
+    padding: 6px 10px 5px;
     margin: 0 0 5px 0;
     transition: background 200ms ease-out, padding 300ms ease-out;
     border-radius: 20px;
-    backgroud-position: left;
 }
+
+
 
 #entry:selected {
     background: linear-gradient(90deg, @flamingo 25%, @lavender 75%);
     border-radius: 20px;
-    backgroud-position: right;
     transition: background 300ms ease-in, padding 300ms ease-in;
-    padding-left: 15px
+    padding-left: 15px;
 }
 
 #text {
     padding-left: 10px;
-    font-size: 14px;
+    font-size: 12px;
     transition: color 300ms ease-out;
 }
 
 #text:selected {
     color: @crust;
-}
-
-#img {
-    display: block;
 }
