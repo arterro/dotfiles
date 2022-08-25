@@ -12,6 +12,9 @@ Plug 'arcticicestudio/nord-vim', { 'branch': 'main' }
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 
+" Color Preview
+Plug 'gko/vim-coloresque'
+
 " Other
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-airline/vim-airline'
