@@ -7,12 +7,7 @@
 		"sway/workspaces",
 	],
 
-	"modules-center": [
-		""
-	],
-
 	"modules-right": [
-		"tray",
         "network",
 		"pulseaudio",
 		"backlight",

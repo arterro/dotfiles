@@ -8,11 +8,11 @@ node
 npm
 emacs
 ripgrep
-sway-borders-git
+sway
 swayidle
-swaylock-effects
-swaybg-git
-wlroots-git
+swaylock-effects-git
+swaybg
+wlroots
 waybar
 wofi
 lxappearance
@@ -35,3 +35,9 @@ pulseaudio-jack
 jq
 dex
 nemo
+wl-clipboard
+gtk-layer-shell
+mpd
+mpc
+cava
+ncmpcpp
