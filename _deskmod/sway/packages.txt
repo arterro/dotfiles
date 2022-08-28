@@ -6,6 +6,9 @@ zsh
 git
 node
 npm
+go
+direnv
+kubectl
 emacs
 ripgrep
 sway
