@@ -17,6 +17,7 @@ waybar
 wofi
 lxappearance
 polkit-gnome
+noto-fonts
 nerd-fonts-jetbrains-mono
 mako
 acpi

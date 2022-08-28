@@ -3,7 +3,7 @@ show-failed-attempts
 daemonize
 
 font=JetBrainsMono Nerd Font
-font-size=40
+#font-size=40
 
 ignore-empty-password
 
