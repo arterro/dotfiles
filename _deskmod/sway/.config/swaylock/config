@@ -9,7 +9,7 @@ ignore-empty-password
 
 clock
 timestr=%H:%M
-datestr=%j day of '%y
+datestr=day %j of '%y
 
 fade-in=0.25
 

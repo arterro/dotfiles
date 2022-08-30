@@ -1,3 +1,5 @@
+exec --no-startup-id $XDG_CONFIG_HOME/sway/scripts/alternating_layouts.py
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
@@ -18,6 +20,7 @@ set $menu wofi -a -I
 set $powermenu $XDG_CONFIG_HOME/wofi/scripts/powermenu.sh
 
 ### Idle configuration
+exec sway-audio-idle-inhibit
 exec $XDG_CONFIG_HOME/sway/scripts/idle.sh
 
 ## Lock Screen
@@ -29,6 +32,8 @@ exec $XDG_CONFIG_HOME/sway/scripts/idle.sh
 #
     # Start a floating terminal
     bindsym $mod+Return exec $term-float
+
+    bindsym $mod+c exec $term-float -e ncmpcpp
 
     # Open the power menu
     bindsym $mod+Shift+e exec $powermenu
