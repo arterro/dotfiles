@@ -38,7 +38,7 @@ window#waybar {
     border-bottom: 3px solid @surface0;
 }
 
-.modules-left {
+#workspaces {
     border-radius: 0 10px 0 0;
     background: @surface0;
     padding: 0 8px 0 3px;
@@ -70,7 +70,12 @@ window#waybar {
     text-shadow: inherit;
 }
 
+#mpd {
+    margin-left: 20px;
+}
+
 #network,
+#bluetooth,
 #pulseaudio,
 #backlight,
 #battery,

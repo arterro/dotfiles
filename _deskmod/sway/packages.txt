@@ -14,12 +14,14 @@ emacs
 ripgrep
 noto-fonts
 nerd-fonts-jetbrains-mono
+ttf-iosevka-ss08
 bluez
 bluez-utils
 htop
 sysstat
 jq
 mpd
+mpd-notification
 mpc
 cava
 ncmpcpp

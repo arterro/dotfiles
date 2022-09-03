@@ -5,10 +5,13 @@
 
 	"modules-left": [
 		"sway/workspaces",
+        "mpd",
+        "custom/spotify"
 	],
 
 	"modules-right": [
         "network",
+        "bluetooth",
 		"pulseaudio",
 		"backlight",
 		"battery",
@@ -32,7 +35,45 @@
 		}
 	},
 
-	"clock": {
+    "mpd": {
+        "format": " {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) | {stateIcon}",
+        "format-disconnected": "",
+        "format-stopped": "",
+        "interval": 10,
+        "consume-icons": {
+            "on": " " // Icon shows only when "consume" is on
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "playing": "",
+            "paused": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "on-click": "mpc pause",
+        "on-scroll-up": "mpc next",
+        "on-scroll-down": "mpc previous"
+    },
+
+    "custom/spotify": {
+        "exec": "/usr/bin/python $XDG_CONFIG_HOME/waybar/scripts/mediaplayer.py --player spotify",
+        "format": " {}",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+	
+    "clock": {
 		"format": "<span font-family='Font Awesome 5 Pro Solid'></span> {:%H:%M}",
 		"tooltip": false
 	},
@@ -47,22 +88,38 @@
 		"tooltip": true,
 		"tooltip-format": "{ipaddr}/{cidr}"
 	},
-	
-	"pulseaudio": {
-		"format": "<span font-family='Font Awesome 5 Pro Solid'>{icon}</span> {volume}%",
-		"format-muted": "<span font-family='Font Awesome 5 Pro Solid'></span> Muted",
-		"format-icons": {
-			"default": ["", ""]
-		},
-		"states": {
-			"warning": 80,
-			"critical": 90
-		},
-		"scroll-step": 3,
-		"on-click": "volume.sh -t &",
-		"smooth-scrolling-threshold": 5,
-		"tooltip": false
-	},
+
+    "bluetooth": {
+        "controller": "1",
+    	"format": "",
+        "format-disabled":"",
+    	"format-connected": " {device_alias}",
+    	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
+    
+    "pulseaudio": {
+        "format": "{volume}% {icon} ",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },	
 	
 	"backlight": {
 		"format": "<span font-family='Font Awesome 5 Pro Solid'>{icon}</span> {percent}%",
