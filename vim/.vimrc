@@ -274,3 +274,16 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeShowHidden=1
 
+" Custom function to remove Alacritty padding when using VIM
+"function RemoveAlacrittyPadding()
+"    silent !sed -i '37s/15/0/' ~/.config/alacritty/alacritty.yml
+"    silent !sed -i '38s/20/0/' ~/.config/alacritty/alacritty.yml
+"endfunction
+"
+"function AddAlacrittyPadding()
+"    silent !sed -i '37s/0/15/' ~/.config/alacritty/alacritty.yml
+"    silent !sed -i '38s/0/20/' ~/.config/alacritty/alacritty.yml
+"endfunction
+"
+"autocmd VimEnter * call RemoveAlacrittyPadding()
+"autocmd VimLeavePre * call AddAlacrittyPadding()
