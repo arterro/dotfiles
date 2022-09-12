@@ -5,7 +5,13 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval `ssh-agent -s`
+    ssh-add ~/.ssh/id_ed25519
+fi
+
 . $HOME/.zshrc
+
 
 #
 # Browser
