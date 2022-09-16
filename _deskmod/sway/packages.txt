@@ -4,7 +4,7 @@ tmux
 stow
 zsh
 git
-node
+nodejs
 npm
 go
 fd
@@ -17,6 +17,7 @@ nerd-fonts-jetbrains-mono
 ttf-iosevka-ss08
 bluez
 bluez-utils
+firefox
 htop
 sysstat
 jq
@@ -37,7 +38,6 @@ lxappearance
 polkit-gnome
 arc-x-icons-theme
 arc-gtk-theme
-arc-gtk-theme-eos
 gtk-engine-murrine
 grim
 slurp
