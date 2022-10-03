@@ -1,5 +1,6 @@
 .DS_Store
 vim/.vim/**/plugged
 tmux/.tmux/**/plugins
+_deskmod/sway/.local
 
 !tmux/.tmux/**/plugins/tpm

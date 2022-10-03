@@ -1,5 +1,6 @@
 ranger
 alacritty
+kitty
 tmux
 stow
 zsh

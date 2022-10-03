@@ -92,3 +92,7 @@ fi
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 eval "$(direnv hook zsh)"
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+    exec sway
+fi

@@ -25,7 +25,7 @@ cd ~/.dotfiles
 
 Symlink the top-level configurations
 ```sh
-stow -R *
+stow -R .
 ```
 
 With this the application configurations are in place and can now move on to a desired look and feel within `_deskmod`.
