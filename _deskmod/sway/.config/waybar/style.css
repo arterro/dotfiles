@@ -74,6 +74,7 @@ window#waybar {
     margin-left: 20px;
 }
 
+#idle_inhibitor,
 #network,
 #bluetooth,
 #pulseaudio,
