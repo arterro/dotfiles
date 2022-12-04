@@ -93,6 +93,8 @@ fi
 
 eval "$(direnv hook zsh)"
 
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
 if [ "$(tty)" = "/dev/tty1" ]; then
     exec sway
 fi

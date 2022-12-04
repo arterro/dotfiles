@@ -27,6 +27,8 @@ mpd-notification
 mpc
 cava
 ncmpcpp
+ncspot
+rescrobbled-git
 sway
 swayidle
 sway-audio-idle-inhibit-git

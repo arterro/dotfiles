@@ -1,12 +1,18 @@
 {
+    "diagnostic.errorSign": "✘",
+    "diagnostic.warningSign": "⚠",
+    "diagnostic.infoSign": "?",
+    "diagnostic.checkCurrentLine": true,
     "codeLens.enable": true,
     "coc.preferences.formatOnSaveFiletypes": [
         "css",
         "markdown",
         "typescript",
         "javascript",
-        "json"
+        "json",
+        "go"
     ],
+    "coc.preferences.hoverTarget": "float",
     "languageserver": {
         "terraform": {
             "command": "terraform-lsp",
@@ -31,6 +37,9 @@
                 "completeUnimported": true
             }
         }
+    },
+    "go.goplsOptions": {
+        "staticcheck": true
     },
     "yaml.schemas": {
         "kubernetes": "/*.yaml"

@@ -20,7 +20,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'chase/vim-ansible-yaml'
@@ -54,6 +54,8 @@ colorscheme embark
 if (has("termguicolors"))
   set termguicolors
 endif
+
+:autocmd InsertEnter,InsertLeave * set cul!
 
 let g:lightline = { 'colorscheme': 'embark' }
 
@@ -234,27 +236,30 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " ale
-let g:ale_fixers = {
-    \ 'javascript': ['eslint']
-    \}
-
-nmap <leader>d <Plug>(ale_fix)
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '×'
-let g:ale_sign_warning = '⚠'
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+"let g:ale_fixers = {
+"    \ 'javascript': ['eslint']
+"    \}
+"
+"nmap <leader>d <Plug>(ale_fix)
+"let g:ale_fix_on_save = 1
+"let g:ale_sign_error = '×'
+"let g:ale_sign_warning = '⚠'
+"highlight ALEErrorSign ctermbg=NONE ctermfg=red
+"highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 "au filetype go inoremap <buffer> . .<C-x><C-o>
 
 set autowrite
 
 " Go syntax highlighting
+let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
 
 " Auto formatting and importing
 let g:go_fmt_autosave = 1
@@ -265,6 +270,10 @@ let g:go_auto_type_info = 1
 
 " Disable vim-go autocompletion in favor of CoC
 let g:go_code_completion_enabled = 0
+
+" disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled = 0
+let g:go_metalinter_enabled = []
 
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
