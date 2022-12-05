@@ -1,6 +1,8 @@
 .DS_Store
 vim/.vim/**/plugged
 tmux/.tmux/**/plugins
+ncspot/.config/ncspot/*
+!ncspot/.config/ncspot/config.toml
 _deskmod/sway/.local
 
 !tmux/.tmux/**/plugins/tpm
