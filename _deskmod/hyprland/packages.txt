@@ -1,0 +1,16 @@
+arc-x-icons-theme
+cava
+cbonsai
+eww-wayland
+hyprland-git
+hyprpaper-git
+mpd-notification
+ncspot
+nerd-fonts-jetbrains-mono
+pfetch
+rescrobbled-git
+sway-audio-idle-inhibit-git
+swaylock-effects-git
+ttf-comic-mono-git
+ttf-iosevka-ss08
+yay-git

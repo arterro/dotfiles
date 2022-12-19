@@ -1,0 +1,14 @@
+(defwidget bar []
+	(box :class "eww-bar"
+		:orientation "v"
+))
+
+(defwindow bar
+	:geometry (geometry :x "10"
+			    :y "0"
+			    :height "1420"
+			    :width "30px"
+			    :anchor "left center")
+	:monitor 0
+	:exclusive "true"
+(bar))
