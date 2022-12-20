@@ -1,14 +1,12 @@
-(defvar workspaces "[1,2,3,4,5,6]")
-(defvar menu "wofi -a -I")
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
 
 (defwidget launcher []
     (box :space-evenly "false"
          :orientation "v"
-    (button :class "launcher-btn"
-            :onclick "notify-send test" ""))
+    (button :class "launcher-btn ${current_workspace}"
+            :onclick "bash ~/.config/eww/scripts/launcher" ""))
 )
-
-(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
 
 (defwidget workspaces []
     (box :space-evenly true
@@ -16,8 +14,8 @@
          :spacing "5"
          :class "workspaces"
          (for workspace in workspaces
-            (button :onclick "hyprctl dispatch workspace ${workspace}"
-                    :class "workspace-entry ${workspace == current_workspace ? "current" : ""}"
+            (button :onclick "hyprctl dispatch workspace ${workspace.id}"
+                    :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "primed" : ""}"
                     "")
          )
     )

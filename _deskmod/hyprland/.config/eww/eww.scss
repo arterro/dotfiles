@@ -21,7 +21,6 @@
 }
 
 .workspaces {
-    //background: $overlay0;
     color: $text;
     margin-top: 5px;
     padding: 10px 0;
@@ -37,5 +36,9 @@
 .workspace-entry.current {
     color: $text;
     font-weight: 600;
-    transition: color 400ms ease-in;
+    transition: color 200ms ease-in;
+}
+
+.workspace-entry.primed {
+    color: $text; 
 }
