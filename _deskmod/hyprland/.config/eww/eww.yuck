@@ -1,14 +1,48 @@
+(defvar menu "wofi -a -I")
+
+(defwidget launcher []
+    (box :space-evenly "false"
+         :orientation "v"
+    (button :class "launcher-btn"
+            :onclick "notify-send test" ""))
+)
+
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+
+(defwidget workspaces []
+    (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" 
+              :class "workspaces-widget"
+    (box :space-evenly true
+         :orientation "v"
+         :spacing "5"
+         :class "workspaces"
+        (for workspace in workspaces
+            (eventbox 
+                :onclick "hyprctl dispatch workspace ${workspace.id}"
+                (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+                (label :text "${workspace.id}"))))
+    ))
+)
+
+(defwidget top []
+    (box :orientation "v"
+         :space-evenly "false"
+         :valign "start"
+(launcher)
+(workspaces)))
+
 (defwidget bar []
 	(box :class "eww-bar"
-		:orientation "v"
-))
+	     :orientation "v"
+(top)))
 
 (defwindow bar
 	:geometry (geometry :x "10"
-			    :y "0"
-			    :height "1420"
-			    :width "30px"
-			    :anchor "left center")
+			            :y "0"
+			            :height "100%"
+			            :width "45px"
+			            :anchor "left center")
 	:monitor 0
 	:exclusive "true"
 (bar))

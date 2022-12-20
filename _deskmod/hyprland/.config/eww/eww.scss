@@ -1,10 +1,30 @@
 @import "themes/catpuccin/mocha.scss";
 
 * {
-  all: unset;
+    all: unset;
 }
 
 .eww-bar {
-  background-color: rgba($surface1, 1);
-  border-radius: 10px;
- }
+    //background-color: rgba($surface1, 1);
+    background: linear-gradient($surface0, $surface1, $surface0);
+    border: 1px $mantle solid;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 5px 0 0;
+}
+
+.launcher-btn {
+    color: $sapphire;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 2em;
+    padding: 10px 0;
+    margin: 0 8px 0 0;
+}
+
+.workspaces {
+    background: $surface1;
+    color: $text;
+    margin-top: 5px;
+    padding: 10px 0;
+    border-radius: 10px;
+}
