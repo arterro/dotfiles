@@ -5,11 +5,10 @@
 }
 
 .eww-bar {
-    //background-color: rgba($surface1, 1);
     background: linear-gradient($surface0, $surface1, $surface0);
     border: 1px $mantle solid;
     border-radius: 10px;
-    margin: 10px 0;
+    margin: 11px 0;
     padding: 5px 0 0;
 }
 
@@ -22,9 +21,21 @@
 }
 
 .workspaces {
-    background: $surface1;
+    //background: $overlay0;
     color: $text;
     margin-top: 5px;
     padding: 10px 0;
     border-radius: 10px;
+}
+
+.workspace-entry {
+    font-family: "Font Awesome 5 Pro";
+    color: $overlay0;
+    margin: 5px 0;
+}
+
+.workspace-entry.current {
+    color: $text;
+    font-weight: 600;
+    transition: color 400ms ease-in;
 }
