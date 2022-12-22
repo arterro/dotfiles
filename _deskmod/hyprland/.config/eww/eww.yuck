@@ -1,11 +1,18 @@
+(defvar eww "/usr/bin/eww")
+(defvar power false)
+
 (deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+
+(defpoll hour :interval "1s" "date '+%H'")
+(defpoll min  :interval "1s" "date '+%M'")
 
 (defwidget launcher []
     (box :space-evenly "false"
          :orientation "v"
-    (button :class "launcher-btn ${current_workspace}"
-            :onclick "bash ~/.config/eww/scripts/launcher" ""))
+         (button :class "launcher-btn ${current_workspace}"
+                 "")
+    )
 )
 
 (defwidget workspaces []
@@ -28,16 +35,78 @@
 (launcher)
 (workspaces)))
 
+
+
+
+
+(defwidget time []
+	(box :orientation "v" 
+		 :class "clock" 
+		 :valign "end"
+	     (button :onclick "scripts/popup calendar"	
+	        	 :class "time-hour" hour)
+	     (button :onclick "scripts/popup calendar"	
+	        	 :class "time-min"  min)
+    )
+)
+
+(defwidget power []
+	(eventbox :onhover "${eww} update power=true"
+			  :onhoverlost "${eww} update power=false"
+	          (box :orientation "v"
+	          	   :space-evenly "false"
+	          	   :vexpand "false"
+	          	   :class "power-menu"
+                   (revealer :transition "slideup"
+	               			 :reveal power
+	               			 :duration "550ms"
+                             (box :orientation "v"
+	                         	  :space-evenly "false"
+                                  :class "power-menu-options"
+	                              (button :class "logout"
+	                              		  :tooltip "Logout"
+	                              		  :onclick "scripts/system logout" "")
+	                              (button :class "lock"
+	                                	  :tooltip "Lock Screen"
+	                                	  :onclick "scripts/system lock" "")
+  	                              (button :class "suspend"
+	                                	  :tooltip "Suspend"
+	                              		  :onclick "scripts/system suspend" "")
+  	                              (button :class "reboot"
+	                                	  :tooltip "Reboot"
+	                              		  :onclick "reboot" "")
+	                              (button :class "shutdown"
+	                              		  :tooltip "Shutdown"
+	                              		  :onclick "shutdown now" "")
+                                 
+                             )
+                   )
+	               (button :class "power-options"
+	               		   :tooltip "Power Options"
+	               		   "􏁭")
+              )
+    )
+)
+
+(defwidget bottom []
+	(box	:orientation "v"
+			:space-evenly false
+            :valign "end"
+(time)
+(power)))
+
+
 (defwidget bar []
 	(box :class "eww-bar"
 	     :orientation "v"
-(top)))
+(top)
+(bottom)))
 
 (defwindow bar
 	:geometry (geometry :x "10"
 			            :y "0"
 			            :height "100%"
-			            :width "45px"
+			            :width "40px"
 			            :anchor "left center")
 	:monitor 0
 	:exclusive "true"

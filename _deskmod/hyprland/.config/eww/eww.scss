@@ -6,39 +6,92 @@
 
 .eww-bar {
     background: linear-gradient($surface0, $surface1, $surface0);
-    border: 1px $mantle solid;
+    border: 1px $surface1 solid;
     border-radius: 10px;
-    margin: 11px 0;
+    margin: 10px 0;
     padding: 5px 0 0;
-}
 
-.launcher-btn {
-    color: $sapphire;
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 2em;
-    padding: 10px 0;
-    margin: 0 8px 0 0;
-}
+    .launcher-btn {
+        color: $sapphire;
+        font-family: "JetBrainsMono Nerd Font";
+        font-size: 2em;
+        padding: 0 10px 0 0;
+        margin: 10px 0 0;
+    }
+    
+    .workspaces {
+        color: $text;
+        margin-top: 5px;
+        padding: 10px 0;
+        border-radius: 10px;
+    
+        .workspace-entry {
+            font-family: "Font Awesome 5 Pro";
+            color: $overlay0;
+            margin: 0;
+            padding: 5px 0;
+        
+            &:hover {
+                color: $sapphire;
+            }
+           
+            &.primed {
+                color: $text;
+        
+                &:hover {
+                    color: $sapphire;
+                }
+            }
+            
+            &.current {
+                color: $text;
+                font-weight: 600;
+                transition: color 200ms ease-in;
+        
+                &:hover {
+                    color: $text;
+                }
+            }
+            
+        }
+    }
 
-.workspaces {
-    color: $text;
-    margin-top: 5px;
-    padding: 10px 0;
-    border-radius: 10px;
-}
+    .clock {
+        background: $surface2;
+        border-radius: 5px;
+        color: $text;
+        font: 20px "Comic Mono";
+        padding: 10px 0 5px;
+        margin: 0 3px;
+    }
 
-.workspace-entry {
-    font-family: "Font Awesome 5 Pro";
-    color: $overlay0;
-    margin: 5px 0;
-}
+    .power-menu {
+        font: 600 22px "Font Awesome 5 Pro";
+        margin: 15px 0;
 
-.workspace-entry.current {
-    color: $text;
-    font-weight: 600;
-    transition: color 200ms ease-in;
-}
+        .power-menu-options {
+            background: $surface2;
+            border-radius: 5px;
+            padding: 5px 0;
+            margin: 0 3px 10px;
 
-.workspace-entry.primed {
-    color: $text; 
+            button {
+                font-size: 20px;
+                color: $text;
+                margin: 5px 0;
+
+                &:hover {
+                    color: $sapphire;
+                }
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+
+        .power-options {
+            color: $red;
+        }
+    }
 }
