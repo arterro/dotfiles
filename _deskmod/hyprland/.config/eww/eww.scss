@@ -26,7 +26,7 @@
         border-radius: 10px;
     
         .workspace-entry {
-            font-family: "Font Awesome 5 Pro";
+            font: 12px "Font Awesome 5 Pro";
             color: $overlay0;
             margin: 0;
             padding: 5px 0;
@@ -44,9 +44,11 @@
             }
             
             &.current {
+                font-size: 16px;
                 color: $text;
                 font-weight: 600;
-                transition: color 200ms ease-in;
+                transition: all 200ms ease-in;
+                padding: 3px 0;
         
                 &:hover {
                     color: $text;
@@ -70,13 +72,12 @@
         margin: 15px 0;
 
         .power-menu-options {
-            background: $surface2;
             border-radius: 5px;
             padding: 5px 0;
-            margin: 0 3px 10px;
+            margin: 0 3px 5px;
 
             button {
-                font-size: 20px;
+                font-size: 18px;
                 color: $text;
                 margin: 5px 0;
 
