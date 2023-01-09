@@ -26,10 +26,10 @@
         border-radius: 10px;
     
         .workspace-entry {
-            font: 12px "Font Awesome 5 Pro";
+            font: 600 10px "Font Awesome 5 Pro";
             color: $overlay0;
             margin: 0;
-            padding: 5px 0;
+            padding: 7px 0;
         
             &:hover {
                 color: $sapphire;
@@ -44,7 +44,7 @@
             }
             
             &.current {
-                font-size: 16px;
+                font-size: 14px;
                 color: $text;
                 font-weight: 600;
                 transition: all 200ms ease-in;
