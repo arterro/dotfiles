@@ -7,6 +7,8 @@
 (defpoll hour :interval "1s" "date '+%H'")
 (defpoll min  :interval "1s" "date '+%M'")
 
+(defpoll battery :interval "1s" "scripts/battery")
+
 (defwidget launcher []
     (box :space-evenly "false"
          :orientation "v"
