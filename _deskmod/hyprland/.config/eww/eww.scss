@@ -4,6 +4,18 @@
     all: unset;
 }
 
+tooltip {
+    margin-left: 20px;
+}
+
+tooltip.background {
+    background: linear-gradient($surface0, $surface0);
+    opacity: 0.95;
+    font: 400 14px "JetBrainsMono Nerd Font";
+    border-radius: 10px;
+    color: #bfc9db;
+}
+
 .eww-bar {
     background: linear-gradient($surface0, $surface1, $surface0);
     border: 1px $surface1 solid;
@@ -56,6 +68,13 @@
             }
             
         }
+    }
+
+    .bat {
+        font: 600 26px "JetBrainsMono Nerd Font";
+        margin: 10px 0;
+        padding: 0 10px;
+        color: $text;
     }
 
     .clock {

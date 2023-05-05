@@ -4,10 +4,10 @@
 (deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
 
-(defpoll hour :interval "1s" "date '+%H'")
-(defpoll min  :interval "1s" "date '+%M'")
-
-(defpoll battery :interval "1s" "scripts/battery")
+(defpoll hour               :interval "1s" "date '+%H'")
+(defpoll min                :interval "1s" "date '+%M'")
+(defpoll battery            :interval "1s"  "scripts/battery icon")
+(defpoll battery-capacity   :interval "1s"  "scripts/battery percent")
 
 (defwidget launcher []
     (box :space-evenly "false"
@@ -36,10 +36,6 @@
          :valign "start"
 (launcher)
 (workspaces)))
-
-
-
-
 
 (defwidget time []
 	(box :orientation "v" 
@@ -90,10 +86,21 @@
     )
 )
 
+(defwidget bat []
+    (box :orientation "v"    
+         :space-evenly "false"
+         (label :class "bat"        
+                :halign "end"       
+                :text battery   
+                :tooltip "${battery-capacity}%")
+    )
+)
+
 (defwidget bottom []
 	(box	:orientation "v"
 			:space-evenly false
             :valign "end"
+(bat)
 (time)
 (power)))
 
