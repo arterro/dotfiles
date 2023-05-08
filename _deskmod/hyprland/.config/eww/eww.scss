@@ -80,22 +80,28 @@ scale trough {
     }
 
     .battery {
-        font: 600 26px "JetBrainsMono Nerd Font";
-        margin: 10px 0;
+        font: 400 26px "JetBrainsMono Nerd Font";
+        margin: 3px 0 5px;
+        color: $text;
+    }
+
+    .wifi {
+        font: 400 18px "FontAwesome Pro 5";
+        margin: 5px 0 10px;
         color: $text;
     }
 
     .brightness {
+        margin: 0 0 5px;
+        font: 400 22px "JetBrainsMono Nerd Font";
+        color: $text;
+        
         .bar {
+            margin: 0 0 5px;
             trough highlight {
                 background-color: $text;
                 border-radius: 5px;
             }
-        }
-
-        label {
-            font: 600 22px "JetBrainsMono Nerd Font";
-            color: $text;
         }
     }
     
@@ -105,11 +111,11 @@ scale trough {
         color: $text;
         font: 20px "Comic Mono";
         padding: 10px 0 5px;
-        margin: 0 3px;
+        margin: 5px 3px 0;
     }
 
     .power-menu {
-        font: 600 22px "Font Awesome 5 Pro";
+        font: 900 22px "Font Awesome 5 Pro";
         margin: 15px 0;
 
         .power-menu-options {

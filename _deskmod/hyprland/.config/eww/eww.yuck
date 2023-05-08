@@ -6,8 +6,12 @@
 
 (defpoll hour               :interval "1s" "date '+%H'")
 (defpoll min                :interval "1s" "date '+%M'")
-(defpoll battery            :interval "1s"  "scripts/battery icon")
+(defpoll battery-icon       :interval "1s"  "scripts/battery icon")
 (defpoll battery-capacity   :interval "1s"  "scripts/battery percent")
+(defpoll wifi-icon          :interval "1s" "scripts/wifi icon")
+(defpoll wifi-name          :interval "1s" "scripts/wifi name")
+(defpoll current-brightness :interval "1s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+(defvar bright false)
 
 (defwidget launcher []
     (box :space-evenly "false"
@@ -86,12 +90,21 @@
     )
 )
 
-(defwidget bat []
+(defwidget wifi []
+    (box :orientation "v"  
+         :space-evently false
+         (label :class "wifi"
+            :text wifi-icon
+            :tooltip wifi-name)
+    )
+)
+
+(defwidget battery []
     (box :orientation "v"    
-        :visible {battery-capacity != "" ? true : false }
-        :space-evenly false
+         :visible {battery-capacity != "" ? true : false }
+         :space-evenly false
          (label :class "battery"        
-                :text battery   
+                :text battery-icon
                 :tooltip "${battery-capacity}%")
     )
 )
@@ -116,15 +129,14 @@
 				   :max 101 
 				   :min 0))
   			(label :text ""))))
-(defpoll current-brightness :interval "1s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
-(defvar bright false)
 
 (defwidget bottom []
 	(box :orientation "v"
 		 :space-evenly false
          :valign "end"
+(wifi)
 (brightness)
-(bat)
+(battery)
 (time)
 (power)))
 
