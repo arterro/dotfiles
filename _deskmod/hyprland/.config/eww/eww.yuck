@@ -89,17 +89,39 @@
 (defwidget bat []
     (box :orientation "v"    
          :space-evenly "false"
-         (label :class "bat"        
-                :halign "end"       
+         (label :class "battery"        
                 :text battery   
                 :tooltip "${battery-capacity}%")
     )
 )
 
+(defwidget brightness []
+  (eventbox :onhover "${eww} update bright=true"   
+  			:onhoverlost "${eww} update bright=false"
+  			(box    :orientation "v"  
+			  		:space-evenly "false"  
+					:spacing 2
+					:class "brightness"
+  			(revealer :transition "slideup" 
+			  		  :reveal bright   
+					  :duration "550ms"
+  			(scale :class "bar" 
+			  	   :value current-brightness 
+				   :tooltip "Brightness: ${current-brightness}%" 
+				   :onchange "brightnessctl set {}%" 
+				   :orientation "v" 
+				   :flipped true 
+				   :max 101 
+				   :min 0))
+  			(label :text ""))))
+(defpoll current-brightness :interval "1s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+(defvar bright false)
+
 (defwidget bottom []
-	(box	:orientation "v"
-			:space-evenly false
-            :valign "end"
+	(box :orientation "v"
+		 :space-evenly false
+         :valign "end"
+(brightness)
 (bat)
 (time)
 (power)))

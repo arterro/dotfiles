@@ -16,6 +16,15 @@ tooltip.background {
     color: #bfc9db;
 }
 
+scale trough {
+  all: unset;
+  background-color: $surface1;
+  border-radius: 5px;
+  min-height: 80px;
+  min-width: 10px;
+  margin: .3rem 0 .3rem 0;
+}
+
 .eww-bar {
     background: linear-gradient($surface0, $surface1, $surface0);
     border: 1px $surface1 solid;
@@ -70,13 +79,26 @@ tooltip.background {
         }
     }
 
-    .bat {
+    .battery {
         font: 600 26px "JetBrainsMono Nerd Font";
         margin: 10px 0;
-        padding: 0 10px;
         color: $text;
     }
 
+    .brightness {
+        .bar {
+            trough highlight {
+                background-color: $text;
+                border-radius: 5px;
+            }
+        }
+
+        label {
+            font: 600 22px "JetBrainsMono Nerd Font";
+            color: $text;
+        }
+    }
+    
     .clock {
         background: $surface2;
         border-radius: 5px;
