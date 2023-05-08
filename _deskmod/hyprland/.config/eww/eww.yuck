@@ -88,7 +88,8 @@
 
 (defwidget bat []
     (box :orientation "v"    
-         :space-evenly "false"
+        :visible {battery-capacity != "" ? true : false }
+        :space-evenly false
          (label :class "battery"        
                 :text battery   
                 :tooltip "${battery-capacity}%")
@@ -99,9 +100,10 @@
   (eventbox :onhover "${eww} update bright=true"   
   			:onhoverlost "${eww} update bright=false"
   			(box    :orientation "v"  
-			  		:space-evenly "false"  
+			  		:space-evenly false
 					:spacing 2
 					:class "brightness"
+                    :visible {battery-capacity != "" ? true : false }
   			(revealer :transition "slideup" 
 			  		  :reveal bright   
 					  :duration "550ms"
