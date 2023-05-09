@@ -17,12 +17,21 @@ tooltip.background {
 }
 
 scale trough {
-  all: unset;
-  background-color: $surface1;
-  border-radius: 5px;
-  min-height: 80px;
-  min-width: 10px;
-  margin: .3rem 0 .3rem 0;
+    all: unset;
+    background-color: $surface1;
+    border-radius: 5px;
+    min-height: 80px;
+    min-width: 10px;
+    margin: .3rem 0 .3rem 0;
+}
+
+.slider {
+    margin: 0 0 5px;
+
+    trough highlight {
+        background-color: $text;
+        border-radius: 5px;
+    }
 }
 
 .eww-bar {
@@ -45,7 +54,8 @@ scale trough {
         margin-top: 5px;
         padding: 10px 0;
         border-radius: 10px;
-    
+
+        
         .workspace-entry {
             font: 600 10px "Font Awesome 5 Pro";
             color: $overlay0;
@@ -91,18 +101,16 @@ scale trough {
         color: $text;
     }
 
+    .volume {
+        font: 400 20px "JetbrainsMono Nerd Font";
+        margin: 2px 3px 2px 0;
+        color: $text;
+    }
+
     .brightness {
         margin: 0 0 5px;
         font: 400 22px "JetBrainsMono Nerd Font";
         color: $text;
-        
-        .bar {
-            margin: 0 0 5px;
-            trough highlight {
-                background-color: $text;
-                border-radius: 5px;
-            }
-        }
     }
     
     .clock {

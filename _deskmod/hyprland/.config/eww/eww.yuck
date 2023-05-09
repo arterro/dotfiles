@@ -12,6 +12,8 @@
 (defpoll wifi-name          :interval "1s" "scripts/wifi name")
 (defpoll current-brightness :interval "1s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 (defvar bright false)
+(defpoll current-volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defvar volum false)
 
 (defwidget launcher []
     (box :space-evenly "false"
@@ -92,7 +94,7 @@
 
 (defwidget wifi []
     (box :orientation "v"  
-         :space-evently false
+         :space-evenly false
          (label :class "wifi"
             :text wifi-icon
             :tooltip wifi-name)
@@ -109,6 +111,27 @@
     )
 )
 
+(defwidget volume []
+	(eventbox :onhover "${eww} update volum=true" 		
+			  :onhoverlost "${eww} update volum=false"
+	(box      :orientation "v" 	  
+			  :space-evenly "false" 
+			  :spacing "2"
+	(revealer :transition "slideup" 
+			  :reveal volum         
+			  :duration "550ms"
+	(scale    :class "slider" 	  
+			  :value current-volume 
+			  :orientation "v"      
+			  :flipped true 
+			  :tooltip "Volume: ${current-volume}%" 
+			  :max 101 
+			  :min 0 
+			  :onchange "amixer -D pulse sset Master {}%" ))
+	(label    :class "volume"
+              :text ""))
+))
+
 (defwidget brightness []
   (eventbox :onhover "${eww} update bright=true"   
   			:onhoverlost "${eww} update bright=false"
@@ -120,7 +143,7 @@
   			(revealer :transition "slideup" 
 			  		  :reveal bright   
 					  :duration "550ms"
-  			(scale :class "bar" 
+  			(scale :class "slider" 
 			  	   :value current-brightness 
 				   :tooltip "Brightness: ${current-brightness}%" 
 				   :onchange "brightnessctl set {}%" 
@@ -136,6 +159,7 @@
          :valign "end"
 (wifi)
 (brightness)
+(volume)
 (battery)
 (time)
 (power)))
