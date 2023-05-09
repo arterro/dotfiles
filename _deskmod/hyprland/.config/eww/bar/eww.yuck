@@ -1,19 +1,19 @@
-(defvar eww "/usr/bin/eww")
+(defvar eww "/usr/bin/eww --config ~/.config/eww/bar")
 (defvar power false)
+(defvar bright false)
+(defvar volum false)
 
-(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
-(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/bar/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/bar/scripts/get-active-workspace")
 
 (defpoll hour               :interval "1s" "date '+%H'")
 (defpoll min                :interval "1s" "date '+%M'")
-(defpoll battery-icon       :interval "1s"  "scripts/battery icon")
-(defpoll battery-capacity   :interval "1s"  "scripts/battery percent")
+(defpoll battery-icon       :interval "1s" "scripts/battery icon")
+(defpoll battery-capacity   :interval "1s" "scripts/battery percent")
 (defpoll wifi-icon          :interval "1s" "scripts/wifi icon")
 (defpoll wifi-name          :interval "1s" "scripts/wifi name")
 (defpoll current-brightness :interval "1s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
-(defvar bright false)
 (defpoll current-volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
-(defvar volum false)
 
 (defwidget launcher []
     (box :space-evenly "false"
