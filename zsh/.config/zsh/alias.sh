@@ -11,5 +11,7 @@ alias tmain='~/.tmux/tmux-bootstrap.sh arterro'
 
 alias do='echo --dry-run=client -o yaml'
 
+alias s="kitty +kitten ssh"
+
 alias k=kubectl
 compdef __start_kubectl k

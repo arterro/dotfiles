@@ -1,69 +1,33 @@
+#!/bin/bash
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
 #***
 # Filesearch
 #***
-function f() { find . -iname "*$1*" ${@:2}; }
-function r() { grep "$1" ${@:2} -R .; }
+function f() { find . -iname "*$1*" "${@:2}"; }
+function r() { grep "$1" "${@:2}" -R .; }
 
 #***
 # Create directory and enter it
 #***
-function mkcd() { mkdir -p "$@" && cd "$_"; }
+function mkcd() { mkdir -p "$@" && cd "$_" || exit; }
 
 #***
 # Search 1Password for object
 #***
-function opwd() { op get item $1 | jq '.details.fields[] | (select(.designation=="username").value),(select(.designation=="password").value)'; }
-
-#***
-# Create note
-#***
-_n() {
-  local lis cur
-  lis=$(find "${NOTES}" -name "*.md" | \
-    sed -e "s|${NOTES}/||" | \
-    sed -e 's/\.md$//')
-  cur=${comp_words[comp_cword]}
-  compreply=( $(compgen "$lis" -- "$cur") )
-}
-
-n() {
-  : "${NOTES:?'NOTES env var not set'}"
-  if [ $# -eq 0 ]; then
-    local file
-    file=$(find "${NOTES}" -name "*.md" | \
-      sed -e "s|${NOTES}/||" | \
-      sed -e 's/\.md$//' | \
-      fzf \
-        --multi \
-        --select-1 \
-        --exit-0 \
-        --preview="cat ${NOTES}/{}.md" \
-        --preview-window=right:70%:wrap)
-    [[ -n $file ]] && \
-      ${editor:-vim} "${NOTES}/${file}.md"
-  else
-    case "$1" in
-      "-d")
-        rm "${NOTES}"/"$2".md
-        ;;
-      *)
-        ${editor:-vim} "${NOTES}"/"$*".md
-        ;;
-    esac
-  fi
-}
-
-complete -f _n n
+function opwd() { op get item "$1" | jq '.details.fields[] | (select(.designation=="username").value),(select(.designation=="password").value)'; }
 
 function pip-install-save { 
-    pip install $1 && pip freeze | grep $1 >> requirements.txt
+    pip install "$1" && pip freeze | grep "$1" >> requirements.txt
 }
 
 #***
 # Create tmux Session
 #***
 function tsession() {
-    sh ~/.tmux/tmux-bootstrap.sh $1
+    sh ~/.tmux/tmux-bootstrap.sh "$1"
 }
 
 #***
@@ -73,14 +37,15 @@ function setaws() {
     local PURPLE='\033[1;35m'
     local YELLOW='\033[1;33m'
     local NC='\033[0m' # No Color
+    local profile_name="${1}"
+    local profile_status
     
     if ! command -v aws &> /dev/null; then
-	echo -e "${PURPLE}Please install the AWS Command Line Interface.${NC}" 
-	return 1
+	    echo -e "${PURPLE}Please install the AWS Command Line Interface.${NC}" 
+    	return 1
     fi
-
-    local profile_name="${1}"
-    local profile_status=$( (aws configure --profile ${profile_name} list) 2>&1)
+    
+    profile_status=$( (aws configure --profile "${profile_name}" list) 2>&1)
 
     if [[ $profile_status = *'could not be found'* ]]; then
         echo -e "Unable to locate credentials for ${PURPLE}${profile_name}${NC}."
@@ -94,13 +59,13 @@ function setaws() {
 # Create a new git branch
 #***
 function createbranch() {
-    if [[ -z $1 ]] ; then
+    if [[ -z $1 ]]; then
         echo "Please specify a branch name."
         return 1
     fi
 
-    g checkout -b ${1}
-    git push --set-upstream origin ${1}
+    g checkout -b "${1}"
+    git push --set-upstream origin "${1}"
 }
 
 #***
@@ -112,11 +77,11 @@ function prunebranches() {
         return 1
     fi
 
-    g checkout ${1} && g pull && g branch | grep -v "${1}" | xargs git branch -D
+    git checkout "${1}" && g pull && g branch | grep -v "${1}" | xargs git branch -D
 }
 
 #***
-# Rename branch local and remotely
+# Rename branch local and remote
 #***
 function mvbranch() (
     current_branch=$1
@@ -124,35 +89,42 @@ function mvbranch() (
     if [[ -z $1 ]] ; then
         current_branch=$(git branch --show-current)
     else
-        g checkout $1
+        git checkout "$1"
     fi
 
-    echo "Rename the branch: $current_branch?" 
+    printf "\nDo you want to rename the branch ${bold}%s${normal}?\n" "$current_branch"
     
     select yn in "Yes" "No"; do
         case $yn in
-            Yes ) break;;
-            No ) return;;
+            "Yes")
+                echo "Yes"
+                ;;
+            "No")
+                echo "No"
+                ;;
         esac
     done
 
-    echo "\nNew branch name:"
+    printf "\nNew branch name:"
 
-    read new_branch_name
+    read -r new_branch_name
     
-    echo "\nRenaming branch from $current_branch to $new_branch_name..."
+    printf "\nRenaming branch from %s to %s..." "$current_branch" "$new_branch_name"
 
-    g branch -m $new_branch_name
-    g push origin -u $new_branch_name
-    g push origin :$current_branch
+    git branch -m "$new_branch_name"
+    git push origin -u "$new_branch_name"
+    git push origin :"$current_branch"
 )
 
+#***
+# Remove branch local and remote
+#***
 function rmbranch() {
     if [[ -z $1 ]] ; then
-        echo "Please specify a branch name."
+        printf "Please specify a branch name."
         return 1
     fi
 
-    g branch -d $1
-    g push origin :$1
+    git branch -d "$1"
+    git push origin :"$1"
 }

@@ -2,7 +2,8 @@
 vim/.vim/**/plugged
 tmux/.tmux/**/plugins
 ncspot/.config/ncspot/*
-!ncspot/.config/ncspot/config.toml
-_deskmod/sway/.local
+_deskmod/**/.local/*
 
+!ncspot/.config/ncspot/config.toml
 !tmux/.tmux/**/plugins/tpm
+!_deskmod/**/.local/share/fonts/**

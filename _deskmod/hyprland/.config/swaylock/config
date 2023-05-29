@@ -11,7 +11,7 @@ clock
 timestr=%H:%M
 datestr=day %j of '%y
 
-fade-in=0.25
+#fade-in=0.25
 
 effect-blur=30x2
 effect-scale=0.1

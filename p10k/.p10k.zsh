@@ -395,7 +395,7 @@
       *github.com*)            res+=$'\uF408 ';;
       *bb-*)                   res+=$'\uF5A7 ';;
       *bitbucket.org*)         res+=$'\uF5A7 ';;
-      *gitlab.com*)            res+=$'\uF296 ';;
+      *gitlab*)            res+=$'\uF296 ';;
       *)                       res+=$'\uF1D3 ';;
     esac
 
