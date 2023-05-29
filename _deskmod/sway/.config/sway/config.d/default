@@ -1,4 +1,4 @@
-exec --no-startup-id $XDG_CONFIG_HOME/sway/scripts/alternating_layouts.py
+exec_always autotiling
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -24,7 +24,7 @@ exec sway-audio-idle-inhibit
 exec $XDG_CONFIG_HOME/sway/scripts/idle.sh
 
 ## Lock Screen
-    bindsym $mod+f1 exec swaylock
+    bindsym $mod+Alt+l exec swaylock
 
 ### Key bindings
 #
