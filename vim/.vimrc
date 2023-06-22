@@ -72,7 +72,7 @@ highlight Identifir ctermfg=150
 set updatetime=300
 set signcolumn=yes
 
-let g:coc_global_extensions = ['coc-tsserver', 'coc-yaml', 'coc-go']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-yaml', 'coc-go', 'coc-rust-analyzer']
 
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)

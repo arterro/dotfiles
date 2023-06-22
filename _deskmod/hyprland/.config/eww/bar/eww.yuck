@@ -3,45 +3,75 @@
 (defvar bright false)
 (defvar volum false)
 
-(deflisten workspaces :initial "[]" "bash ~/.config/eww/bar/scripts/get-workspaces")
-(deflisten current_workspace :initial "1" "bash ~/.config/eww/bar/scripts/get-active-workspace")
+(deflisten workspaces0 
+    "bash scripts/get-workspaces.sh 0")
+(deflisten workspaces1 
+    "bash scripts/get-workspaces.sh 1")
+(deflisten current_workspace0 
+    :initial "1" 
+    "scripts/get-active-workspace.sh 0")
+(deflisten current_workspace1 
+    :initial "11" 
+    "scripts/get-active-workspace.sh 1")
 
 (defpoll hour               :interval "1s" "date '+%H'")
 (defpoll min                :interval "1s" "date '+%M'")
-(defpoll battery-icon       :interval "1s" "scripts/battery icon")
-(defpoll battery-capacity   :interval "1s" "scripts/battery percent")
-(defpoll wifi-icon          :interval "1s" "scripts/wifi icon")
-(defpoll wifi-name          :interval "1s" "scripts/wifi name")
-(defpoll current-brightness :interval "1s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
-(defpoll current-volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll battery_icon       :interval "1s" "scripts/battery icon")
+(defpoll battery_capacity   :interval "1s" "scripts/battery percent")
+(defpoll wifi_icon          :interval "1s" "scripts/wifi icon")
+(defpoll wifi_name          :interval "1s" "scripts/wifi name")
+(defpoll current_brightness :interval "1s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+(defpoll current_volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
 
 (defwidget launcher []
     (box :space-evenly "false"
          :orientation "v"
-         (button :class "launcher-btn ${current_workspace}"
+         (button :class "launcher-btn"
                  "")
     )
 )
 
-(defwidget workspaces []
+(defwidget workspaces0 []
     (box :space-evenly true
          :orientation "v"
          :spacing "5"
-         :class "workspaces"
-         (for workspace in workspaces
+         :class "workspaces ${current_workspace0}"
+         (for workspace in workspaces0
             (button :onclick "hyprctl dispatch workspace ${workspace.id}"
-                    :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "primed" : ""}"
+                    :class "workspace-entry ${workspace.id == current_workspace0 ? "current" : ""} ${workspace.windows > 0 ? "primed" : ""}"
                     "")
          )
     )
 )
 
-(defwidget top []
+(defwidget workspaces1 []
+    (box :space-evenly true
+         :orientation "v"
+         :spacing "5"
+         :class "workspaces ${current_workspace1}"
+         (for workspace in workspaces1
+            (button :onclick "hyprctl dispatch workspace ${workspace.id}"
+                    :class "workspace-entry ${workspace.id == current_workspace1 ? "current" : ""} ${workspace.windows > 0 ? "primed" : ""}"
+                    "")
+         )
+    )
+)
+
+(defwidget top0 []
     (box :orientation "v"
          :space-evenly "false"
          :valign "start"
 (launcher)
-(workspaces)))
+(workspaces0)
+))
+
+(defwidget top1 []
+    (box :orientation "v"
+         :space-evenly "false"
+         :valign "start"
+(launcher)
+(workspaces1)
+))
 
 (defwidget time []
 	(box :orientation "v" 
@@ -96,18 +126,18 @@
     (box :orientation "v"  
          :space-evenly false
          (label :class "wifi"
-            :text wifi-icon
-            :tooltip wifi-name)
+            :text wifi_icon
+            :tooltip wifi_name)
     )
 )
 
 (defwidget battery []
     (box :orientation "v"    
-         :visible {battery-capacity != "" ? true : false }
+         :visible {battery_capacity != "" ? true : false }
          :space-evenly false
          (label :class "battery"        
-                :text battery-icon
-                :tooltip "${battery-capacity}%")
+                :text battery_icon
+                :tooltip "${battery_capacity}%")
     )
 )
 
@@ -121,10 +151,10 @@
 			  :reveal volum         
 			  :duration "550ms"
 	(scale    :class "slider" 	  
-			  :value current-volume 
+			  :value current_volume 
 			  :orientation "v"      
 			  :flipped true 
-			  :tooltip "Volume: ${current-volume}%" 
+			  :tooltip "Volume: ${current_volume}%" 
 			  :max 101 
 			  :min 0 
 			  :onchange "amixer -D pulse sset Master {}%" ))
@@ -139,13 +169,13 @@
 			  		:space-evenly false
 					:spacing 2
 					:class "brightness"
-                    :visible {battery-capacity != "" ? true : false }
+                    :visible {battery_capacity != "" ? true : false }
   			(revealer :transition "slideup" 
 			  		  :reveal bright   
 					  :duration "550ms"
   			(scale :class "slider" 
-			  	   :value current-brightness 
-				   :tooltip "Brightness: ${current-brightness}%" 
+			  	   :value current_brightness 
+				   :tooltip "Brightness: ${current_brightness}%" 
 				   :onchange "brightnessctl set {}%" 
 				   :orientation "v" 
 				   :flipped true 
@@ -165,13 +195,19 @@
 (power)))
 
 
-(defwidget bar []
+(defwidget bar0 []
 	(box :class "eww-bar"
 	     :orientation "v"
-(top)
+(top0)
 (bottom)))
 
-(defwindow bar
+(defwidget bar1 []
+	(box :class "eww-bar"
+	     :orientation "v"
+(top1)
+(bottom)))
+
+(defwindow bar0
 	:geometry (geometry :x "10"
 			            :y "0"
 			            :height "100%"
@@ -179,4 +215,14 @@
 			            :anchor "left center")
 	:monitor 0
 	:exclusive "true"
-(bar))
+(bar0))
+
+(defwindow bar1
+	:geometry (geometry :x "10"
+			            :y "0"
+			            :height "100%"
+			            :width "40px"
+			            :anchor "left center")
+	:monitor 1
+	:exclusive "true"
+(bar1))
