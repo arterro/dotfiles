@@ -1,7 +1,7 @@
 arc-x-icons-theme
 arc-gtk-theme
 eww-wayland
-hyprland-git
+hyprland
 hyprpaper
 ttf-jetbrains-mono-nerd
 rescrobbled-git
