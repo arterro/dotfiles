@@ -3,6 +3,7 @@
 #**********
 # ENVIRONMENT
 #**********
+export SHELL=$(which zsh)
 export WORK=$HOME/work
 export GPG_TTY=$TTY
 export DOTFILES=$HOME/.dotfiles

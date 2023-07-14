@@ -1,0 +1,27 @@
+#!/bin/bash
+
+gnome_shell_dir="$HOME/.local/share/gnome-shell"
+gnome_extensions_dir="$gnome_shell_dir/extensions"
+
+echo "Installing the following packages for gnome...";
+cat ./gnome_packages.txt
+
+sleep 5
+
+yay -Syu --needed --noconfirm - < ./gnome_packages.txt
+
+if [[ ! -d "$gnome_extensions_dir" ]]; then
+    echo "Creating extensions directory: $gnome_extensions_dir"
+    ln -s "$(pwd)/extensions" "$gnome_extensions_dir"
+fi
+
+echo -e "Establishing gnome configurations...\n"
+dconf load / < ./gnome-config
+
+for f in ./extensions/*; do
+    if [[ -d "$f" ]]; then
+        extension=$(basename "$f")
+        echo "Enabling extension $extension..."
+        #gnome-extensions enable "$extension"
+    fi
+done
