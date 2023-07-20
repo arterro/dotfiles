@@ -10,7 +10,13 @@
         "typescript",
         "javascript",
         "json",
-        "go"
+        "go",
+        "rust"
+    ],
+    "workspace.ignoredFolders": [
+        "$HOME",
+        "$HOME/.cargo/**",
+        "$HOME/.rustup/**"
     ],
     "coc.preferences.hoverTarget": "float",
     "languageserver": {
@@ -43,6 +49,6 @@
     },
     "yaml.schemas": {
         "kubernetes": "/*.yaml"
-    }
+    },
 }
 

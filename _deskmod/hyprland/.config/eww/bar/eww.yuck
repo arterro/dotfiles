@@ -1,0 +1,218 @@
+(defvar eww "/usr/bin/eww --config ~/.config/eww/bar")
+(defvar power false)
+(defvar bright false)
+(defvar volum false)
+
+(deflisten workspaces0 
+    "bash scripts/get-workspaces.sh 0")
+(deflisten workspaces1 
+    "bash scripts/get-workspaces.sh 1")
+(deflisten current_workspace0 
+    :initial "1" 
+    "scripts/get-active-workspace.sh 0")
+(deflisten current_workspace1 
+    :initial "11" 
+    "scripts/get-active-workspace.sh 1")
+
+(defpoll hour               :interval "1s" "date '+%H'")
+(defpoll min                :interval "1s" "date '+%M'")
+(defpoll battery_icon       :interval "1s" "scripts/battery icon")
+(defpoll battery_capacity   :interval "1s" "scripts/battery percent")
+(defpoll wifi_icon          :interval "1s" "scripts/wifi icon")
+(defpoll wifi_name          :interval "1s" "scripts/wifi name")
+(defpoll current_brightness :interval "1s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+(defpoll current_volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+
+(defwidget workspaces0 []
+    (box :space-evenly true
+         :orientation "v"
+         :spacing "5"
+         :class "workspaces ${current_workspace0}"
+         (for workspace in workspaces0
+            (button :onclick "hyprctl dispatch workspace ${workspace.id}"
+                    :class "workspace-entry ${workspace.id == current_workspace0 ? "current" : ""} ${workspace.windows > 0 ? "primed" : ""}"
+                    "")
+         )
+    )
+)
+
+(defwidget workspaces1 []
+    (box :space-evenly true
+         :orientation "v"
+         :spacing "5"
+         :class "workspaces ${current_workspace1}"
+         (for workspace in workspaces1
+            (button :onclick "hyprctl dispatch workspace ${workspace.id}"
+                    :class "workspace-entry ${workspace.id == current_workspace1 ? "current" : ""} ${workspace.windows > 0 ? "primed" : ""}"
+                    "")
+         )
+    )
+)
+
+(defwidget top0 []
+    (box :orientation "v"
+         :space-evenly "false"
+         :valign "start"
+(workspaces0)
+))
+
+(defwidget top1 []
+    (box :orientation "v"
+         :space-evenly "false"
+         :valign "start"
+(workspaces1)
+))
+
+(defwidget time []
+	(box :orientation "v" 
+		 :class "clock" 
+		 :valign "end"
+	     (button :onclick "scripts/popup calendar"	
+	        	 :class "time-hour" hour)
+	     (button :onclick "scripts/popup calendar"	
+	        	 :class "time-min"  min)
+    )
+)
+
+(defwidget power []
+	(eventbox :onhover "${eww} update power=true"
+			  :onhoverlost "${eww} update power=false"
+	          (box :orientation "v"
+	          	   :space-evenly "false"
+	          	   :vexpand "false"
+	          	   :class "power-menu"
+                   (revealer :transition "slideup"
+	               			 :reveal power
+	               			 :duration "550ms"
+                             (box :orientation "v"
+	                         	  :space-evenly "false"
+                                  :class "power-menu-options"
+	                              (button :class "logout"
+	                              		  :tooltip "Logout"
+	                              		  :onclick "scripts/system logout" "")
+	                              (button :class "lock"
+	                                	  :tooltip "Lock Screen"
+	                                	  :onclick "scripts/system lock" "")
+  	                              (button :class "suspend"
+	                                	  :tooltip "Suspend"
+	                              		  :onclick "scripts/system suspend" "")
+  	                              (button :class "reboot"
+	                                	  :tooltip "Reboot"
+	                              		  :onclick "reboot" "")
+	                              (button :class "shutdown"
+	                              		  :tooltip "Shutdown"
+	                              		  :onclick "shutdown now" "")
+                                 
+                             )
+                   )
+	               (button :class "power-options"
+	               		   :tooltip "Power Options"
+	               		   "􏁭")
+              )
+    )
+)
+
+(defwidget wifi []
+    (box :orientation "v"  
+         :space-evenly false
+         (label :class "wifi"
+            :text wifi_icon
+            :tooltip wifi_name)
+    )
+)
+
+(defwidget battery []
+    (box :orientation "v"    
+         :visible {battery_capacity != "" ? true : false }
+         :space-evenly false
+         (label :class "battery"        
+                :text battery_icon
+                :tooltip "${battery_capacity}%")
+    )
+)
+
+(defwidget volume []
+	(eventbox :onhover "${eww} update volum=true" 		
+			  :onhoverlost "${eww} update volum=false"
+	(box      :orientation "v" 	  
+			  :space-evenly "false" 
+			  :spacing "2"
+	(revealer :transition "slideup" 
+			  :reveal volum         
+			  :duration "550ms"
+	(scale    :class "slider" 	  
+			  :value current_volume 
+			  :orientation "v"      
+			  :flipped true 
+			  :tooltip "Volume: ${current_volume}%" 
+			  :max 101 
+			  :min 0 
+			  :onchange "amixer -D pulse sset Master {}%" ))
+	(label    :class "volume"
+              :text ""))
+))
+
+(defwidget brightness []
+  (eventbox :onhover "${eww} update bright=true"   
+  			:onhoverlost "${eww} update bright=false"
+  			(box    :orientation "v"  
+			  		:space-evenly false
+					:spacing 2
+					:class "brightness"
+                    :visible {battery_capacity != "" ? true : false }
+  			(revealer :transition "slideup" 
+			  		  :reveal bright   
+					  :duration "550ms"
+  			(scale :class "slider" 
+			  	   :value current_brightness 
+				   :tooltip "Brightness: ${current_brightness}%" 
+				   :onchange "brightnessctl set {}%" 
+				   :orientation "v" 
+				   :flipped true 
+				   :max 101 
+				   :min 0))
+  			(label :text ""))))
+
+(defwidget bottom []
+	(box :orientation "v"
+		 :space-evenly false
+         :valign "end"
+(wifi)
+(brightness)
+(volume)
+(battery)
+(time)
+(power)))
+
+
+(defwidget bar0 []
+	(box :class "eww-bar"
+	     :orientation "v"
+(top0)
+(bottom)))
+
+(defwidget bar1 []
+	(box :class "eww-bar"
+	     :orientation "v"
+(top1)
+(bottom)))
+
+(defwindow bar0
+	:geometry (geometry :x "10"
+			            :y "0"
+			            :height "100%"
+			            :width "40px"
+			            :anchor "left center")
+	:monitor 0
+	:exclusive "true"
+(bar0))
+
+(defwindow bar1
+	:geometry (geometry :x "10"
+			            :y "0"
+			            :height "100%"
+			            :width "40px"
+			            :anchor "left center")
+	:monitor 1
+	:exclusive "true"
+(bar1))

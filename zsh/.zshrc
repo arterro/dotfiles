@@ -56,7 +56,7 @@ fi
 # zsh - Custom helper functions and aliases
 #***
 if [[ -d $HOME/.config/zsh ]]; then
-    for config in $HOME/.config/zsh/*; do
+    for config in "$HOME"/.config/zsh/*; do
         source $config
     done
 fi
@@ -96,5 +96,5 @@ eval "$(direnv hook zsh)"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-    exec sway
+    exec Hyprland
 fi

@@ -1,0 +1,153 @@
+@import "themes/catpuccin/mocha.scss";
+
+* {
+    all: unset;
+}
+
+tooltip {
+    margin-left: 20px;
+}
+
+tooltip.background {
+    background: linear-gradient($surface0, $surface0);
+    opacity: 0.95;
+    font: 400 14px "JetBrainsMono Nerd Font";
+    border-radius: 10px;
+    color: #bfc9db;
+}
+
+scale trough {
+    all: unset;
+    background-color: $surface1;
+    border-radius: 5px;
+    min-height: 80px;
+    min-width: 10px;
+    margin: .3rem 0 .3rem 0;
+}
+
+.slider {
+    margin: 3px 0 2px;
+
+    trough highlight {
+        background-color: $text;
+        border-radius: 5px;
+    }
+}
+
+.eww-bar {
+    background: linear-gradient($surface0, $surface1, $surface0);
+    border: 1px $surface1 solid;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 5px 0 0;
+
+    .launcher-btn {
+        color: $sapphire;
+        font-family: "JetBrainsMono Nerd Font";
+        font-size: 2em;
+        padding: 0 10px 0 0;
+        margin: 10px 0 0;
+    }
+    
+    .workspaces {
+        color: $text;
+        margin-top: 5px;
+        padding: 10px 0;
+        border-radius: 10px;
+
+        
+        .workspace-entry {
+            font: 600 10px "Font Awesome 5 Pro";
+            color: $overlay0;
+            margin: 0;
+            padding: 7px 0;
+        
+            &:hover {
+                color: $sapphire;
+            }
+           
+            &.primed {
+                color: $text;
+        
+                &:hover {
+                    color: $sapphire;
+                }
+            }
+            
+            &.current {
+                font-size: 14px;
+                color: $text;
+                font-weight: 600;
+                transition: all 200ms ease-in;
+                padding: 3px 0;
+        
+                &:hover {
+                    color: $text;
+                }
+            }
+            
+        }
+    }
+
+    .battery {
+        font: 400 26px "JetBrainsMono Nerd Font";
+        margin: 1px 0 5px;
+        color: $text;
+    }
+
+    .wifi {
+        font: 400 22px "JetBrainsMono Nerd Font";
+        margin: 5px 7px 5px 0;
+        color: $text;
+    }
+
+    .volume {
+        font: 400 20px "JetbrainsMono Nerd Font";
+        margin: 2px 3px 5px 0;
+        color: $text;
+    }
+
+    .brightness {
+        margin: 0 0 5px;
+        font: 400 22px "JetBrainsMono Nerd Font";
+        color: $text;
+    }
+    
+    .clock {
+        background: $surface2;
+        border-radius: 5px;
+        color: $text;
+        font: 20px "Comic Mono";
+        padding: 10px 0 5px;
+        margin: 5px 3px 0;
+    }
+
+    .power-menu {
+        font: 900 22px "Font Awesome 5 Pro";
+        margin: 15px 0;
+
+        .power-menu-options {
+            border-radius: 5px;
+            padding: 5px 0;
+            margin: 0 3px 5px;
+
+            button {
+                font-size: 18px;
+                color: $text;
+                margin: 5px 0;
+
+                &:hover {
+                    color: $sapphire;
+                }
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+
+        .power-options {
+            color: $red;
+        }
+    }
+}
