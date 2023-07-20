@@ -2,7 +2,7 @@ arc-x-icons-theme
 arc-gtk-theme
 eww-wayland
 hyprland
-hyprpaper
+swaybg
 ttf-jetbrains-mono-nerd
 rescrobbled-git
 sway-audio-idle-inhibit-git
@@ -28,7 +28,9 @@ emacs
 
 bluez
 bluez-utils
+avizo
 
+man-db
 zsh
 pfetch
 npm

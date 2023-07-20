@@ -64,6 +64,7 @@
 (package! org-roam :recipe (:host github
                             :repo "org-roam/org-roam"))
 (package! org-ref)
+(package! helm)
 (package! helm-bibtex)
 (package! org-superstar)
 (package! org-pdftools)

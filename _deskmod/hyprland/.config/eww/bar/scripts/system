@@ -2,7 +2,7 @@
 
 eww=$(which eww)
 
-${eww} update power=false
+${eww} --config ~/.config/eww/bar update power=false
 
 case $1 in
     logout)
