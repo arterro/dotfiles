@@ -1,0 +1,19 @@
+#!/bin/bash
+
+eww=$(which eww)
+
+${eww} --config ~/.config/eww/bar update power=false
+
+case $1 in
+    logout)
+        pkill Hyprland && logout
+        ;;
+
+    lock)
+        swaylock
+        ;;
+    
+    suspend)
+        systemctl suspend
+        ;;
+esac

@@ -121,13 +121,12 @@
   time-stamp-format "%Y-%m-%d %H:%M:%S (%u)")
 
 (add-hook 'write-file-hooks 'time-stamp)
+(add-hook 'org-capture-mode-hook 'evil-insert-state)
 
 ;; ****************
 ;; ORG-ROAM
 ;; ****************
 
-;; V2 displays a warning message
-(setq org-roam-v2-ack t)
 (with-eval-after-load 'org-roam
   (setq org-roam-directory (expand-file-name "~/notes/tome"))
   (setq org-id-link-to-org-use-id t)
@@ -141,11 +140,17 @@
   (setq org-roam-capture-templates
         '(("d" "default" plain "%?"
            :immediate-finish t
-           :if-new (file+head "${slug}.org"
-                              "#+TITLE: ${title}\n#+hugo_lastmod: Time-stamp: <>\n\n")
+           :if-new(file+head "${slug}.org"
+                             "#+TITLE: ${title}\n#+hugo_lastmod: Time-stamp: <>\n\n")
            :unnarrowed t)
+          ("n" "note" plain "%?"
+           :if-new(file+head "${slug}.org"
+                             "#+title: ${title}\n#+hugo_custom_front_matter: :summary \n#+hugo_date: %u\n#+hugo_auto_set_lastmod: Time-stamp: <>\n#+hugo_code_fence: nil\n#+hugo_section: notes\n#+hugo_draft: false\n#+hugo_tags: \n#+property: header-args :dir run :mkdirp yes :padline no :exports both :results code :eval no-export\n#+export_file_name: ${slug}\n")
+           :empty-lines-after 1
+           :unnarrowed t
+           :immediate-finish t)
           ("t" "temp" plain "%?"
-           :if-new(file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+           :if-new(file+head "%<%Y%m%d%H%M%S>_${slug}.org"
                              "#+TITLE: ${title}\n#+hugo_lastmod: Time-stamp: <>\n\n")
            :immediate-finish t
            :unnarrowed t)

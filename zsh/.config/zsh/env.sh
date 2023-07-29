@@ -47,5 +47,3 @@ fi
 
 # Remove duplicates paths
 typeset -U path
-
-

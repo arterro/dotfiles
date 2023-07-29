@@ -49,10 +49,22 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+;; Pinning older package for `transient` and `with-editor`
+;; Some magit dependencies break with Emacs 28, as the function
+;; defvar-keymap is only added in Emacs 29 and Doom currently has no Emacs 29 support
+(package! transient
+    :pin "c2bdf7e12c530eb85476d3aef317eb2941ab9440"
+    :recipe (:host github :repo "magit/transient"))
+
+(package! with-editor
+    :pin "bbc60f68ac190f02da8a100b6fb67cf1c27c53ab"
+    :recipe (:host github :repo "magit/with-editor"))
+
 (package! visual-fill-column)
 (package! org-roam :recipe (:host github
                             :repo "org-roam/org-roam"))
 (package! org-ref)
+(package! helm)
 (package! helm-bibtex)
 (package! org-superstar)
 (package! org-pdftools)

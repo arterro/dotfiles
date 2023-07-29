@@ -1,0 +1,18 @@
+font=JetBrainsMono Nerd Font Mono 12
+width=350
+max-icon-size=80
+
+# Colors
+background-color=#1E1D2F
+text-color=#cdd6f4
+border-color=#b4befe
+progress-color=over #302D41
+
+border-size=2
+border-radius=10
+
+default-timeout=5000
+
+[urgency=high]
+border-color=#f38ba8
+

@@ -1,6 +1,8 @@
-_deskmod
+\_deskmod
 \.git
 \.gitignore
 \.gitmodules
 
 ^/README.*
+^/LICENSE.*
+^/COPYING
