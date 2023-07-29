@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# TODO: Add steps to run `doom sync`
+# TODO: Add steps for choosing _deskmod to utilize
+# TODO: Create the `~/notes/tome` directory
+# TODO: Add step for creating `~/.local/share/fonts` / `stow -d fonts -S ET_Bembo -t ~/.local/share/fonts` / `fc-cache -fv`
+
 gnome_shell_dir="$HOME/.local/share/gnome-shell"
 gnome_extensions_dir="$gnome_shell_dir/extensions"
 
