@@ -33,10 +33,6 @@ window:
     columns: 0
     lines: 0
 
-  padding:
-    x: 15
-    y: 20
-
   dynamic_padding: false
 
   decorations: full
@@ -62,9 +58,6 @@ font:
   offset:
     x: 0
     y: 0
-
-  use_thin_strokes: false
-
 
 cursor:
   style:

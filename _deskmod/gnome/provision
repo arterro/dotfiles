@@ -25,3 +25,9 @@ for f in ./extensions/*; do
         #gnome-extensions enable "$extension"
     fi
 done
+
+# Install VIM plugins
+vim +'PlugInstall --sync' +qa
+
+# Install tmux plugins
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
