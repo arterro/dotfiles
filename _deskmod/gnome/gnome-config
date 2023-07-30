@@ -10,14 +10,14 @@ window-maximized=true
 window-size=(768, 600)
 
 [org/gnome/control-center]
-last-panel='applications'
-window-state=(1310, 1330, false)
+last-panel='multitasking'
+window-state=(1310, 934, false)
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
 
 [org/gnome/desktop/app-folders/folders/Utilities]
-apps=['nm-connection-editor.desktop', 'org.gnome.Connections.desktop', 'org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Evince.desktop', 'org.gnome.eog.desktop', 'org.gnome.tweaks.desktop', 'gnome-abrt.desktop', 'gnome-system-log.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
+apps=['org.gnome.Connections.desktop', 'org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Evince.desktop', 'org.gnome.eog.desktop', 'org.gnome.tweaks.desktop', 'nm-connection-editor.desktop', 'gnome-abrt.desktop', 'gnome-system-log.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
 categories=['X-GNOME-Utilities']
 name='X-GNOME-Utilities.directory'
 translate=true
@@ -37,7 +37,7 @@ show-weekdate=false
 
 [org/gnome/desktop/input-sources]
 sources=[('xkb', 'us')]
-xkb-options=@as []
+xkb-options=['terminate:ctrl_alt_bksp']
 
 [org/gnome/desktop/interface]
 clock-show-date=true
@@ -56,10 +56,16 @@ monospace-font-name='JetBrainsMonoNL Nerd Font Propo 10'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel']
+application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus']
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-characters]
+application-id='org.gnome.Characters.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-nautilus]
+application-id='org.gnome.Nautilus.desktop'
 
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=false
@@ -85,11 +91,14 @@ secondary-color='#000000'
 sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/desktop/session]
-idle-delay=uint32 60
+idle-delay=uint32 300
 
 [org/gnome/desktop/sound]
 event-sounds=true
 theme-name='freedesktop'
+
+[org/gnome/desktop/wm/keybindings]
+close=['<Super>q']
 
 [org/gnome/desktop/wm/preferences]
 theme='libadwaita'
@@ -109,7 +118,7 @@ migrated=true
 center-new-windows=true
 dynamic-workspaces=true
 experimental-features=['scale-monitor-framebuffer']
-workspaces-only-on-primary=false
+workspaces-only-on-primary=true
 
 [org/gnome/nautilus/icon-view]
 default-zoom-level='small'
@@ -125,8 +134,22 @@ search-filter-time-type='last_modified'
 [org/gnome/nautilus/window-state]
 initial-size=(890, 550)
 
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
+www=@as []
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>Return'
+command='kitty'
+name='Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>o'
+command='firefox'
+name='Firefox'
+
 [org/gnome/shell]
-app-picker-layout=[{'Alacritty.desktop': <{'position': <0>}>, 'bssh.desktop': <{'position': <1>}>, 'bvnc.desktop': <{'position': <2>}>, 'avahi-discover.desktop': <{'position': <3>}>, 'thunar-bulk-rename.desktop': <{'position': <4>}>, 'org.gnome.Calculator.desktop': <{'position': <5>}>, 'org.gnome.Calendar.desktop': <{'position': <6>}>, 'org.gnome.Cheese.desktop': <{'position': <7>}>, 'org.gnome.clocks.desktop': <{'position': <8>}>, 'cmake-gui.desktop': <{'position': <9>}>, 'org.gnome.Contacts.desktop': <{'position': <10>}>, 'simple-scan.desktop': <{'position': <11>}>, 'emacs.desktop': <{'position': <12>}>, 'emacsclient.desktop': <{'position': <13>}>, 'com.mattjakeman.ExtensionManager.desktop': <{'position': <14>}>, 'org.gnome.Extensions.desktop': <{'position': <15>}>, 'thunar-settings.desktop': <{'position': <16>}>, 'firefox.desktop': <{'position': <17>}>, 'lstopo.desktop': <{'position': <18>}>, 'yelp.desktop': <{'position': <19>}>, 'htop.desktop': <{'position': <20>}>, 'kitty.desktop': <{'position': <21>}>, 'org.gnome.Maps.desktop': <{'position': <22>}>, 'mpv.desktop': <{'position': <23>}>}, {'org.gnome.Music.desktop': <{'position': <0>}>, 'ncspot.desktop': <{'position': <1>}>, 'nemo.desktop': <{'position': <2>}>, 'virtualbox.desktop': <{'position': <3>}>, 'org.gnome.Photos.desktop': <{'position': <4>}>, 'pavucontrol.desktop': <{'position': <5>}>, 'assistant.desktop': <{'position': <6>}>, 'designer.desktop': <{'position': <7>}>, 'linguist.desktop': <{'position': <8>}>, 'qdbusviewer.desktop': <{'position': <9>}>, 'qv4l2.desktop': <{'position': <10>}>, 'qvidcap.desktop': <{'position': <11>}>, 'ranger.desktop': <{'position': <12>}>, 'org.gnome.Settings.desktop': <{'position': <13>}>, 'org.gnome.Software.desktop': <{'position': <14>}>, 'spotify.desktop': <{'position': <15>}>, 'gnome-system-monitor.desktop': <{'position': <16>}>, 'org.gnome.TextEditor.desktop': <{'position': <17>}>, 'thunar.desktop': <{'position': <18>}>, 'org.gnome.Tour.desktop': <{'position': <19>}>, 'Utilities': <{'position': <20>}>, 'org.gnome.Totem.desktop': <{'position': <21>}>, 'vim.desktop': <{'position': <22>}>, 'org.gnome.Weather.desktop': <{'position': <23>}>}, {'org.gnome.Epiphany.desktop': <{'position': <0>}>}]
+app-picker-layout=[{'bssh.desktop': <{'position': <0>}>, 'bvnc.desktop': <{'position': <1>}>, 'avahi-discover.desktop': <{'position': <2>}>, 'org.gnome.Calculator.desktop': <{'position': <3>}>, 'org.gnome.Calendar.desktop': <{'position': <4>}>, 'org.gnome.Cheese.desktop': <{'position': <5>}>, 'org.gnome.clocks.desktop': <{'position': <6>}>, 'org.gnome.Contacts.desktop': <{'position': <7>}>, 'simple-scan.desktop': <{'position': <8>}>, 'com.mattjakeman.ExtensionManager.desktop': <{'position': <9>}>, 'org.gnome.Extensions.desktop': <{'position': <10>}>, 'firefox.desktop': <{'position': <11>}>, 'lstopo.desktop': <{'position': <12>}>, 'yelp.desktop': <{'position': <13>}>, 'org.gnome.Maps.desktop': <{'position': <14>}>}, {'org.gnome.Music.desktop': <{'position': <0>}>, 'org.gnome.Photos.desktop': <{'position': <1>}>, 'qv4l2.desktop': <{'position': <2>}>, 'qvidcap.desktop': <{'position': <3>}>, 'org.gnome.Settings.desktop': <{'position': <4>}>, 'org.gnome.Software.desktop': <{'position': <5>}>, 'gnome-system-monitor.desktop': <{'position': <6>}>, 'org.gnome.TextEditor.desktop': <{'position': <7>}>, 'org.gnome.Tour.desktop': <{'position': <8>}>, 'Utilities': <{'position': <9>}>, 'org.gnome.Totem.desktop': <{'position': <10>}>, 'vim.desktop': <{'position': <11>}>, 'org.gnome.Weather.desktop': <{'position': <12>}>}, {'org.gnome.Epiphany.desktop': <{'position': <0>}>}]
 disable-user-extensions=false
 disabled-extensions=['places-menu@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'forge@jmmaranan.com', 'dash-to-dock@micxgx.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']
 enabled-extensions=['native-window-placement@gnome-shell-extensions.gcampax.github.com', 'no-overview@fthx', 'AlphabeticalAppGrid@stuarthayhurst', 'just-perfection-desktop@just-perfection', 'unite@hardpixel.eu', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'tophat@fflewddur.github.io']
@@ -270,8 +293,9 @@ locations=@av []
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1689281760
+check-timestamp=int64 1690588644
 first-run=false
+flatpak-purge-timestamp=int64 1690607201
 
 [org/gnome/tweaks]
 show-extensions-notice=false

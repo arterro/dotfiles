@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# TODO: Add steps to run `doom sync`
-# TODO: Add steps for choosing _deskmod to utilize
+# TODO: Add step to install `yay`
+# TODO: Add step to run `doom sync`
+# TODO: Add step for choosing _deskmod to utilize
 # TODO: Create the `~/notes/tome` directory
 # TODO: Add step for creating `~/.local/share/fonts` / `stow -d fonts -S ET_Bembo -t ~/.local/share/fonts` / `fc-cache -fv`
 
@@ -22,6 +23,9 @@ fi
 
 echo -e "Establishing gnome configurations...\n"
 dconf load / < ./gnome-config
+
+echo -e "Removing special keybinds...\n"
+gsettings set org.gnome.settings-daemon.plugins.media-keys rotate-video-lock-static "[]"
 
 for f in ./extensions/*; do
     if [[ -d "$f" ]]; then
