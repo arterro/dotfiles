@@ -79,7 +79,8 @@ echo -e "Setting rustup default version to stable...\n"
 rustup default stable
 
 echo -e "The following packages will be installed:\n"
-cat ./packages_base.txt
+sleep 2
+cat packages_base.txt
 start_spinner "\nPreparing installation of packages... "
 sleep 6
 stop_spinner
@@ -91,7 +92,6 @@ spinner "\nInitializing installation of application settings... "
 # Install VIM plugins
 echo -e "Installing VIM plugins...\n"
 vim +'PlugInstall --sync' +qa
-vim +qa
 
 # Install tmux plugins
 echo -e "Installing tmux plugins...\n"

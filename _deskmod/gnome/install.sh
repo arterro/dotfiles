@@ -14,7 +14,7 @@ start_spinner "\nPreparing installation of packages... "
 sleep 6
 stop_spinner
 
-yay -Syu --needed --noconfirm - < ./gnome_packages.txt
+yay -Syu --needed --noconfirm - < gnome_packages.txt
 
 spinner "\nInitializing post installation configurations... "
 
@@ -24,16 +24,16 @@ if [[ ! -d "$gnome_extensions_dir" ]]; then
 fi
 
 echo -e "Establishing gnome configurations...\n"
-dconf load / < ./gnome-config
+dconf load / < gnome-config
 
 echo -e "Removing special keybinds...\n"
 gsettings set org.gnome.settings-daemon.plugins.media-keys rotate-video-lock-static "[]"
 
-for f in ./extensions/*; do
+for f in extensions/*; do
     if [[ -d "$f" ]]; then
         extension=$(basename "$f")
-        echo "Enabling extension $extension..."
-        #gnome-extensions enable "$extension"
+        spinner "Enabling extension $extension... "
+        gnome-extensions enable "$extension"
     fi
 done
 
