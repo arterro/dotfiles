@@ -6,6 +6,7 @@ ls
 emacs
 firefox
 go
+ruby
 rustup
 nodejs
 kubectl
@@ -29,3 +30,4 @@ rescrobbled-git
 ttf-iosevka-ss08
 ttf-jetbrains-mono-nerd
 ripgrep
+vim

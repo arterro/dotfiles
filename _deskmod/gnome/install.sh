@@ -40,4 +40,6 @@ done
 spinner "\nEnabling and starting gdm service..."
 
 sudo systemctl enable gdm.service
-sudo systemctl start gdm.service
+
+spinner "\nRestarting system to complete installation..."
+reboot

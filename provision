@@ -6,7 +6,7 @@ host_font_dir="$HOME/.local/share/fonts"
 host_org_notes_dir="$HOME/notes/tome"
 host_work_dirs=("$HOME/work/priming" "$HOME/work/sandbox" "$HOME/work/projects")
 stow_font_dir="fonts"
-non_base_config=("_deskmod" ".git" "$stow_font_dir" "emacs")
+non_base_config=("_deskmod" ".git" "$stow_font_dir")
 
 declare -a de=()
 
@@ -71,6 +71,13 @@ else
     echo -e "yay installation detected\n"
 fi
 
+spinner "Installing rust..."
+yes | yay -S rustup
+
+# Set rustup version
+echo -e "Setting rustup default version to stable...\n"
+rustup default stable
+
 echo -e "The following packages will be installed:\n"
 cat ./packages_base.txt
 start_spinner "\nPreparing installation of packages... "
@@ -79,11 +86,12 @@ stop_spinner
 
 yay -Syu --needed --noconfirm - < packages_base.txt
 
-spinner "\nInitializing installation of application plugins... "
+spinner "\nInitializing installation of application settings... "
 
 # Install VIM plugins
 echo -e "Installing VIM plugins...\n"
 vim +'PlugInstall --sync' +qa
+vim +qa
 
 # Install tmux plugins
 echo -e "Installing tmux plugins...\n"
@@ -91,7 +99,8 @@ echo -e "Installing tmux plugins...\n"
 
 # Install doom emacs
 echo -e "\nInstalling doom emacs...\n"
-doom sync
+git clone --depth 1 https://github.com/doomemacs/doomemacs "$HOME/.emacs.d"
+~/.emacs.d/bin/doom sync
 
 # Set default shell
 spinner "\nSetting default shell to zsh... "

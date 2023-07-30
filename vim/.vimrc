@@ -49,7 +49,7 @@ syntax on
 " Color Scheme
 " #############
 set background=dark
-colorscheme embark
+silent! colorscheme embark
 
 if (has("termguicolors"))
   set termguicolors
