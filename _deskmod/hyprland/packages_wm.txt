@@ -1,3 +1,4 @@
+greetd-tuigreet
 arc-x-icons-theme
 arc-gtk-theme
 eww-wayland
