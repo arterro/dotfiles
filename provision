@@ -113,7 +113,7 @@ done
 
 spinner "\nInitializing installation for $c... "
 
-spinner "Stowing configurations for $c... "
-stow -vv -R -d ./_deskmod -S "$c" -t $HOME
+#spinner "Stowing configurations for $c... "
+#stow -vv -R -d ./_deskmod -S "$c" -t $HOME
 
 "./_deskmod/$c/install.sh"
