@@ -93,7 +93,11 @@ echo -e "Installing tmux plugins...\n"
 echo -e "\nInstalling doom emacs...\n"
 doom sync
 
-spinner "\nInitializing desktop environment installation... "
+# Set default shell
+spinner "\nSetting default shell to zsh... "
+chsh -s $(which zsh)
+
+spinner "Initializing desktop environment installation... "
 
 PS3="Select environment to install: "
 
