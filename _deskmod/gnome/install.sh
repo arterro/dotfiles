@@ -20,6 +20,7 @@ spinner "\nInitializing post installation configurations... "
 
 if [[ ! -d "$gnome_extensions_dir" ]]; then
     echo "Creating extensions directory: $gnome_extensions_dir"
+    mkdir -p "$gnome_shell_dir"
     ln -s "$(pwd)/extensions" "$gnome_extensions_dir"
 fi
 
@@ -40,6 +41,4 @@ done
 spinner "\nEnabling and starting gdm service..."
 
 sudo systemctl enable gdm.service
-
-spinner "\nRestarting system to complete installation..."
-reboot
+sudo systemctl start gdm.service

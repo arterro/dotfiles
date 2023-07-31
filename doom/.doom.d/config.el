@@ -24,6 +24,7 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18 :weight 'regular))
+;      doom-unicode-font (font-spec :family "JetBrainsMono Nerd Font" :size 10))
 ;      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 18))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
