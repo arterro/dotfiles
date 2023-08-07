@@ -31,3 +31,5 @@ ttf-iosevka-ss08
 ttf-jetbrains-mono-nerd
 ripgrep
 vim
+wireguard-tools
+openresolv
