@@ -10,7 +10,7 @@ window-maximized=true
 window-size=(768, 600)
 
 [org/gnome/control-center]
-last-panel='multitasking'
+last-panel='background'
 window-state=(1310, 934, false)
 
 [org/gnome/desktop/app-folders]
@@ -29,7 +29,9 @@ translate=true
 
 [org/gnome/desktop/background]
 picture-options='zoom'
-primary-color='#3071AE'
+picture-uri='file:///home/adelgado/Firefox_wallpaper.png'
+picture-uri-dark='file:///home/adelgado/Firefox_wallpaper.png'
+primary-color='#30307171aeae'
 secondary-color='#000000'
 
 [org/gnome/desktop/calendar]
@@ -56,7 +58,7 @@ monospace-font-name='JetBrainsMonoNL Nerd Font Propo 10'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus']
+application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center']
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
@@ -64,8 +66,14 @@ application-id='gnome-power-panel.desktop'
 [org/gnome/desktop/notifications/application/org-gnome-characters]
 application-id='org.gnome.Characters.desktop'
 
+[org/gnome/desktop/notifications/application/org-gnome-extensions-desktop]
+application-id='org.gnome.Extensions.desktop.desktop'
+
 [org/gnome/desktop/notifications/application/org-gnome-nautilus]
 application-id='org.gnome.Nautilus.desktop'
+
+[org/gnome/desktop/notifications/application/rog-control-center]
+application-id='rog-control-center.desktop'
 
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=false
@@ -94,7 +102,7 @@ sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gn
 idle-delay=uint32 300
 
 [org/gnome/desktop/sound]
-event-sounds=true
+event-sounds=false
 theme-name='freedesktop'
 
 [org/gnome/desktop/wm/keybindings]
@@ -130,12 +138,14 @@ use-tree-view=true
 default-folder-viewer='list-view'
 migrated-gtk-settings=true
 search-filter-time-type='last_modified'
+search-view='list-view'
 
 [org/gnome/nautilus/window-state]
 initial-size=(890, 550)
 
 [org/gnome/settings-daemon/plugins/media-keys]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']
+rotate-video-lock-static=@as []
 www=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
@@ -148,12 +158,33 @@ binding='<Super>o'
 command='firefox'
 name='Firefox'
 
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Super>e'
+command='nautilus'
+name='Nautilus'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
+binding='Launch1'
+command='rog-control-center'
+name='ASUS Rog Control Center'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4]
+binding='Launch4'
+command='asusctl profile -n'
+name='ASUS Fan Profile'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5]
+binding='Launch3'
+command='asusctl led-mode -n'
+name='ASUS Aura'
+
 [org/gnome/shell]
 app-picker-layout=[{'bssh.desktop': <{'position': <0>}>, 'bvnc.desktop': <{'position': <1>}>, 'avahi-discover.desktop': <{'position': <2>}>, 'org.gnome.Calculator.desktop': <{'position': <3>}>, 'org.gnome.Calendar.desktop': <{'position': <4>}>, 'org.gnome.Cheese.desktop': <{'position': <5>}>, 'org.gnome.clocks.desktop': <{'position': <6>}>, 'org.gnome.Contacts.desktop': <{'position': <7>}>, 'simple-scan.desktop': <{'position': <8>}>, 'com.mattjakeman.ExtensionManager.desktop': <{'position': <9>}>, 'org.gnome.Extensions.desktop': <{'position': <10>}>, 'firefox.desktop': <{'position': <11>}>, 'lstopo.desktop': <{'position': <12>}>, 'yelp.desktop': <{'position': <13>}>, 'org.gnome.Maps.desktop': <{'position': <14>}>}, {'org.gnome.Music.desktop': <{'position': <0>}>, 'org.gnome.Photos.desktop': <{'position': <1>}>, 'qv4l2.desktop': <{'position': <2>}>, 'qvidcap.desktop': <{'position': <3>}>, 'org.gnome.Settings.desktop': <{'position': <4>}>, 'org.gnome.Software.desktop': <{'position': <5>}>, 'gnome-system-monitor.desktop': <{'position': <6>}>, 'org.gnome.TextEditor.desktop': <{'position': <7>}>, 'org.gnome.Tour.desktop': <{'position': <8>}>, 'Utilities': <{'position': <9>}>, 'org.gnome.Totem.desktop': <{'position': <10>}>, 'vim.desktop': <{'position': <11>}>, 'org.gnome.Weather.desktop': <{'position': <12>}>}, {'org.gnome.Epiphany.desktop': <{'position': <0>}>}]
 disable-user-extensions=false
 disabled-extensions=['places-menu@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'forge@jmmaranan.com', 'dash-to-dock@micxgx.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['native-window-placement@gnome-shell-extensions.gcampax.github.com', 'no-overview@fthx', 'AlphabeticalAppGrid@stuarthayhurst', 'just-perfection-desktop@just-perfection', 'unite@hardpixel.eu', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'tophat@fflewddur.github.io']
+enabled-extensions=['native-window-placement@gnome-shell-extensions.gcampax.github.com', 'no-overview@fthx', 'AlphabeticalAppGrid@stuarthayhurst', 'just-perfection-desktop@just-perfection', 'unite@hardpixel.eu', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'tophat@fflewddur.github.io', 'supergfxctl-gex@asus-linux.org']
 favorite-apps=['org.gnome.Nautilus.desktop']
+last-selected-power-profile='performance'
 welcome-dialog-last-shown-version='44.2'
 
 [org/gnome/shell/app-switcher]
@@ -293,7 +324,7 @@ locations=@av []
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1690588644
+check-timestamp=int64 1691510667
 first-run=false
 flatpak-purge-timestamp=int64 1690607201
 
