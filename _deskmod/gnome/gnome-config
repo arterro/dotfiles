@@ -10,7 +10,7 @@ window-maximized=true
 window-size=(768, 600)
 
 [org/gnome/control-center]
-last-panel='background'
+last-panel='wifi'
 window-state=(1310, 934, false)
 
 [org/gnome/desktop/app-folders]
@@ -58,10 +58,16 @@ monospace-font-name='JetBrainsMonoNL Nerd Font Propo 10'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center']
+application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center', 'ncspot', 'gnome-network-panel']
+
+[org/gnome/desktop/notifications/application/gnome-network-panel]
+application-id='gnome-network-panel.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/ncspot]
+application-id='ncspot.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-characters]
 application-id='org.gnome.Characters.desktop'
@@ -182,7 +188,7 @@ name='ASUS Aura'
 app-picker-layout=[{'bssh.desktop': <{'position': <0>}>, 'bvnc.desktop': <{'position': <1>}>, 'avahi-discover.desktop': <{'position': <2>}>, 'org.gnome.Calculator.desktop': <{'position': <3>}>, 'org.gnome.Calendar.desktop': <{'position': <4>}>, 'org.gnome.Cheese.desktop': <{'position': <5>}>, 'org.gnome.clocks.desktop': <{'position': <6>}>, 'org.gnome.Contacts.desktop': <{'position': <7>}>, 'simple-scan.desktop': <{'position': <8>}>, 'com.mattjakeman.ExtensionManager.desktop': <{'position': <9>}>, 'org.gnome.Extensions.desktop': <{'position': <10>}>, 'firefox.desktop': <{'position': <11>}>, 'lstopo.desktop': <{'position': <12>}>, 'yelp.desktop': <{'position': <13>}>, 'org.gnome.Maps.desktop': <{'position': <14>}>}, {'org.gnome.Music.desktop': <{'position': <0>}>, 'org.gnome.Photos.desktop': <{'position': <1>}>, 'qv4l2.desktop': <{'position': <2>}>, 'qvidcap.desktop': <{'position': <3>}>, 'org.gnome.Settings.desktop': <{'position': <4>}>, 'org.gnome.Software.desktop': <{'position': <5>}>, 'gnome-system-monitor.desktop': <{'position': <6>}>, 'org.gnome.TextEditor.desktop': <{'position': <7>}>, 'org.gnome.Tour.desktop': <{'position': <8>}>, 'Utilities': <{'position': <9>}>, 'org.gnome.Totem.desktop': <{'position': <10>}>, 'vim.desktop': <{'position': <11>}>, 'org.gnome.Weather.desktop': <{'position': <12>}>}, {'org.gnome.Epiphany.desktop': <{'position': <0>}>}]
 disable-user-extensions=false
 disabled-extensions=['places-menu@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'forge@jmmaranan.com', 'dash-to-dock@micxgx.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['native-window-placement@gnome-shell-extensions.gcampax.github.com', 'no-overview@fthx', 'AlphabeticalAppGrid@stuarthayhurst', 'just-perfection-desktop@just-perfection', 'unite@hardpixel.eu', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'tophat@fflewddur.github.io', 'supergfxctl-gex@asus-linux.org']
+enabled-extensions=['native-window-placement@gnome-shell-extensions.gcampax.github.com', 'no-overview@fthx', 'AlphabeticalAppGrid@stuarthayhurst', 'just-perfection-desktop@just-perfection', 'unite@hardpixel.eu', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'tophat@fflewddur.github.io', 'supergfxctl-gex@asus-linux.org', 'activities-filled-pill@verdre']
 favorite-apps=['org.gnome.Nautilus.desktop']
 last-selected-power-profile='performance'
 welcome-dialog-last-shown-version='44.2'
@@ -324,9 +330,9 @@ locations=@av []
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1691510667
+check-timestamp=int64 1691865431
 first-run=false
-flatpak-purge-timestamp=int64 1690607201
+flatpak-purge-timestamp=int64 1691733766
 
 [org/gnome/tweaks]
 show-extensions-notice=false
