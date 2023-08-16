@@ -8,6 +8,7 @@ firefox
 go
 ruby
 rustup
+rust-analyzer
 nodejs
 kubectl
 direnv
@@ -33,3 +34,7 @@ ripgrep
 vim
 wireguard-tools
 openresolv
+qemu
+libvirt
+bridge-utils
+virt-manager

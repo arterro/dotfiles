@@ -44,6 +44,7 @@
             }
         }
     },
+    "rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
     "go.goplsOptions": {
         "staticcheck": true
     },
