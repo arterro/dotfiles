@@ -34,7 +34,11 @@ ripgrep
 vim
 wireguard-tools
 openresolv
-qemu
+qemu-full
 libvirt
 bridge-utils
 virt-manager
+rsync
+unrar
+thunderbird
+bind
