@@ -9,7 +9,7 @@ Contains configurations / settings for personalizing Linux.
 Clone this repository
 
 ```sh
-git clone --recurse-submodules -j8 https://github.com/arterro/dotfiles.git ~/.dotfiles
+git clone --recurse-submodules -j8 https://gitlab.com/arturodelgado/dotfiles.git ~/.dotfiles
 ```
 
 Change into the cloned directory

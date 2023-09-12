@@ -24,6 +24,11 @@ if [[ ! -d "$gnome_extensions_dir" ]]; then
     ln -s "$(pwd)/extensions" "$gnome_extensions_dir"
 fi
 
+echo -e "Establishing wallpaper...\n"
+cp ./wallpaper.png $HOME
+gsettings set org.gnome.desktop.background picture-uri file:///$HOME/wallpaper.png
+gsettings set org.gnome.desktop.background picture-uri-dark file:///$HOME/wallpaper.png
+
 echo -e "Establishing gnome configurations...\n"
 dconf load / < gnome-config
 
