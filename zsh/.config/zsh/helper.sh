@@ -33,25 +33,29 @@ function tsession() {
 #***
 # Set AWS profile
 #***
-function setaws() { 
+function setaws() {
     local PURPLE='\033[1;35m'
     local YELLOW='\033[1;33m'
     local NC='\033[0m' # No Color
-    local profile_name="${1}"
-    local profile_status
-    
+
     if ! command -v aws &> /dev/null; then
-	    echo -e "${PURPLE}Please install the AWS Command Line Interface.${NC}" 
-    	return 1
+	echo -e "${PURPLE}Please install the AWS Command Line Interface.${NC}"
+	return 1
     fi
-    
-    profile_status=$( (aws configure --profile "${profile_name}" list) 2>&1)
+
+    local profile_name="${1}"
+    local profile_status=$( (aws configure --profile ${profile_name} list) 2>&1)
 
     if [[ $profile_status = *'could not be found'* ]]; then
         echo -e "Unable to locate credentials for ${PURPLE}${profile_name}${NC}."
         echo -e "You can configure credentials by running \"${YELLOW}aws configure --profile ${1}${NC}\"."
     else
         export AWS_DEFAULT_PROFILE=$profile_name
+        export AWS_PROFILE=$profile_name
+        export AWS_DEFAULT_REGION=$(aws configure get region)
+        export AWS_REGION=$(aws configure get region)
+        export AWS_ACCOUNT=$(aws sts get-caller-identity --query "Account" --output text)
+        export AWS_ACCOUNT_ALIAS=$(aws iam list-account-aliases --query "AccountAliases" --output text)
     fi
 }
 
