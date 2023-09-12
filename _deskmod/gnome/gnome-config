@@ -7,6 +7,20 @@ last-window-size=(652, 481)
 [org/gnome/Weather]
 locations=[<(uint32 2, <('San Diego', 'KSAN', true, [(0.57130928801703362, -2.045230154748896)], [(0.57099020692318392, -2.0447798423485892)])>)>]
 
+[org/gnome/calculator]
+accuracy=9
+angle-units='degrees'
+base=10
+button-mode='basic'
+number-format='automatic'
+show-thousands=false
+show-zeroes=false
+source-currency=''
+source-units='degree'
+target-currency=''
+target-units='radian'
+word-size=64
+
 [org/gnome/calendar]
 active-view='month'
 window-maximized=true
@@ -22,7 +36,7 @@ size=(870, 690)
 
 [org/gnome/control-center]
 last-panel='info-overview'
-window-state=(1310, 934, false)
+window-state=(1310, 931, false)
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
@@ -69,7 +83,10 @@ monospace-font-name='JetBrainsMonoNL Nerd Font Propo 10'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center', 'ncspot', 'gnome-network-panel']
+application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center', 'ncspot', 'gnome-network-panel', 'firefox', 'thunderbird']
+
+[org/gnome/desktop/notifications/application/firefox]
+application-id='firefox.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-network-panel]
 application-id='gnome-network-panel.desktop'
@@ -92,8 +109,11 @@ application-id='org.gnome.Nautilus.desktop'
 [org/gnome/desktop/notifications/application/rog-control-center]
 application-id='rog-control-center.desktop'
 
+[org/gnome/desktop/notifications/application/thunderbird]
+application-id='thunderbird.desktop'
+
 [org/gnome/desktop/peripherals/keyboard]
-numlock-state=false
+numlock-state=true
 
 [org/gnome/desktop/peripherals/touchpad]
 natural-scroll=false
@@ -199,9 +219,9 @@ name='ASUS Aura'
 app-picker-layout=[{'bssh.desktop': <{'position': <0>}>, 'bvnc.desktop': <{'position': <1>}>, 'avahi-discover.desktop': <{'position': <2>}>, 'org.gnome.Calculator.desktop': <{'position': <3>}>, 'org.gnome.Calendar.desktop': <{'position': <4>}>, 'org.gnome.Cheese.desktop': <{'position': <5>}>, 'org.gnome.clocks.desktop': <{'position': <6>}>, 'org.gnome.Contacts.desktop': <{'position': <7>}>, 'simple-scan.desktop': <{'position': <8>}>, 'com.mattjakeman.ExtensionManager.desktop': <{'position': <9>}>, 'org.gnome.Extensions.desktop': <{'position': <10>}>, 'firefox.desktop': <{'position': <11>}>, 'lstopo.desktop': <{'position': <12>}>, 'yelp.desktop': <{'position': <13>}>, 'org.gnome.Maps.desktop': <{'position': <14>}>}, {'org.gnome.Music.desktop': <{'position': <0>}>, 'org.gnome.Photos.desktop': <{'position': <1>}>, 'qv4l2.desktop': <{'position': <2>}>, 'qvidcap.desktop': <{'position': <3>}>, 'org.gnome.Settings.desktop': <{'position': <4>}>, 'org.gnome.Software.desktop': <{'position': <5>}>, 'gnome-system-monitor.desktop': <{'position': <6>}>, 'org.gnome.TextEditor.desktop': <{'position': <7>}>, 'org.gnome.Tour.desktop': <{'position': <8>}>, 'Utilities': <{'position': <9>}>, 'org.gnome.Totem.desktop': <{'position': <10>}>, 'vim.desktop': <{'position': <11>}>, 'org.gnome.Weather.desktop': <{'position': <12>}>}, {'org.gnome.Epiphany.desktop': <{'position': <0>}>}]
 disable-user-extensions=false
 disabled-extensions=['places-menu@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'forge@jmmaranan.com', 'dash-to-dock@micxgx.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['native-window-placement@gnome-shell-extensions.gcampax.github.com', 'no-overview@fthx', 'AlphabeticalAppGrid@stuarthayhurst', 'just-perfection-desktop@just-perfection', 'unite@hardpixel.eu', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'tophat@fflewddur.github.io', 'supergfxctl-gex@asus-linux.org', 'activities-filled-pill@verdre']
+enabled-extensions=['native-window-placement@gnome-shell-extensions.gcampax.github.com', 'no-overview@fthx', 'AlphabeticalAppGrid@stuarthayhurst', 'just-perfection-desktop@just-perfection', 'unite@hardpixel.eu', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'tophat@fflewddur.github.io', 'supergfxctl-gex@asus-linux.org', 'activities-filled-pill@verdre', 'rounded-window-corners@yilozt']
 favorite-apps=['org.gnome.Nautilus.desktop']
-last-selected-power-profile='performance'
+last-selected-power-profile='power-saver'
 welcome-dialog-last-shown-version='44.2'
 
 [org/gnome/shell/app-switcher]
@@ -311,6 +331,12 @@ workspace-popup=false
 workspace-wrap-around=false
 workspaces-in-app-grid=false
 
+[org/gnome/shell/extensions/rounded-window-corners]
+custom-rounded-corner-settings=@a{sv} {}
+global-rounded-corner-settings={'padding': <{'left': <uint32 1>, 'right': <uint32 1>, 'top': <uint32 1>, 'bottom': <uint32 1>}>, 'keep_rounded_corners': <{'maximized': <false>, 'fullscreen': <false>}>, 'border_radius': <uint32 10>, 'smoothing': <uint32 0>, 'enabled': <true>}
+settings-version=uint32 5
+tweak-kitty-terminal=false
+
 [org/gnome/shell/extensions/unite]
 autofocus-windows=false
 enable-titlebar-actions=false
@@ -341,9 +367,9 @@ locations=[<(uint32 2, <('San Diego', 'KSAN', true, [(0.57130928801703362, -2.04
 locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>]
 
 [org/gnome/software]
-check-timestamp=int64 1691865431
+check-timestamp=int64 1694140883
 first-run=false
-flatpak-purge-timestamp=int64 1691733766
+flatpak-purge-timestamp=int64 1693886464
 
 [org/gnome/tweaks]
 show-extensions-notice=false
@@ -361,6 +387,9 @@ sort-order='ascending'
 type-format='category'
 view-type='list'
 window-size=(857, 327)
+
+[org/gtk/settings/color-chooser]
+selected-color=(true, 0.75294117647058822, 0.38039215686274508, 0.79607843137254897, 1.0)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
