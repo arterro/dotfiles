@@ -88,12 +88,11 @@ function prunebranches() {
 # Rename branch local and remote
 #***
 function mvbranch() (
-    current_branch=$1
-
     if [[ -z $1 ]] ; then
         current_branch=$(git branch --show-current)
     else
-        git checkout "$1"
+        current_branch=$1
+        git checkout "$current_branch"
     fi
 
     printf "\nDo you want to rename the branch ${bold}%s${normal}?\n" "$current_branch"
@@ -101,23 +100,23 @@ function mvbranch() (
     select yn in "Yes" "No"; do
         case $yn in
             "Yes")
-                echo "Yes"
+                printf "\nNew branch name:"
+
+                read -r new_branch_name
+                
+                printf "\nRenaming branch from %s to %s..." "$current_branch" "$new_branch_name"
+
+                git branch -m "$new_branch_name"
+                git push origin -u "$new_branch_name"
+                git push origin :"$current_branch"
+                break
                 ;;
             "No")
-                echo "No"
+                break
                 ;;
         esac
     done
 
-    printf "\nNew branch name:"
-
-    read -r new_branch_name
-    
-    printf "\nRenaming branch from %s to %s..." "$current_branch" "$new_branch_name"
-
-    git branch -m "$new_branch_name"
-    git push origin -u "$new_branch_name"
-    git push origin :"$current_branch"
 )
 
 #***
