@@ -42,3 +42,8 @@ rsync
 unrar
 thunderbird
 bind
+net-tools
+dnsmasq
+ncmpcpp
+mpd
+mpc
