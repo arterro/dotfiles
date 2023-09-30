@@ -13,5 +13,7 @@ alias tmain='~/.tmux/tmux-bootstrap.sh arterro'
 
 alias ssh="kitty +kitten ssh"
 
+alias gmpv="gnome-session-inhibit mpv $1"
+
 alias k=kubectl
 compdef __start_kubectl k
