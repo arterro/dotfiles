@@ -11,9 +11,8 @@ alias gnomedump="echo 'Saving Gnome configuration to $DOTFILES/_deskmod/gnome/gn
 
 alias tmain='~/.tmux/tmux-bootstrap.sh arterro'
 
-alias ssh="kitty +kitten ssh"
-
-alias gmpv="gnome-session-inhibit mpv $1"
+alias gmpv="gnome-session-inhibit mpv ${1}"
 
 alias k=kubectl
+alias kns="k config set-context --current --namespace ${1}"
 compdef __start_kubectl k

@@ -1,10 +1,10 @@
 env:
-    TERM: xterm-256color
+  TERM: xterm-256color
 
 # Nord Alacritty
 colors:
   primary:
-    background: "0x2E3440"
+    background: "0x1e1c31"
     foreground: "0xD8DEE9"
   cursor:
     text: "0x2E3440"
@@ -29,14 +29,11 @@ colors:
     white: "0xECEFF4"
 
 window:
-  dimensions:
-    columns: 0
-    lines: 0
-
+  padding:
+    x: 5
+    y: 10
   dynamic_padding: false
-
-  decorations: full
-
+  decorations: none
   opacity: 0.98
 
 live_config_reload: true
@@ -63,11 +60,8 @@ cursor:
   style:
     shape: Beam
     blinking: Always
-  vi_mode:
-    shape: Block
   blink_interval: 500
   unfocused_hollow: true
   thickness: 0.25
 
 working_directory: None
-

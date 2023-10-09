@@ -8,7 +8,7 @@ export WORK=$HOME/work
 export GPG_TTY=$TTY
 export DOTFILES=$HOME/.dotfiles
 export NOTES=$HOME/notes
-export TERM=xterm-kitty
+export TERM=xterm-256color
 
 export USER_NAME=$(whoami)
 

@@ -1,8 +1,21 @@
 [com/mattjakeman/ExtensionManager]
 last-used-version='0.4.2'
 
+[org/freedesktop/folks]
+primary-store='eds:97c3b30b5f411515ef2619d9e80a8d544e624636'
+
 [org/gnome/Console]
 last-window-size=(652, 481)
+
+[org/gnome/Contacts]
+did-initial-setup=true
+window-fullscreen=false
+window-height=600
+window-maximized=false
+window-width=800
+
+[org/gnome/TextEditor]
+last-save-directory='file:///home/adelgado/Documents'
 
 [org/gnome/Weather]
 locations=[<(uint32 2, <('San Diego', 'KSAN', true, [(0.57130928801703362, -2.045230154748896)], [(0.57099020692318392, -2.0447798423485892)])>)>]
@@ -35,7 +48,7 @@ panel-id='world'
 size=(870, 690)
 
 [org/gnome/control-center]
-last-panel='info-overview'
+last-panel='keyboard'
 window-state=(1310, 931, false)
 
 [org/gnome/desktop/app-folders]
@@ -53,9 +66,10 @@ name='suse-yast.directory'
 translate=true
 
 [org/gnome/desktop/background]
+color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///home/adelgado/Firefox_wallpaper.png'
-picture-uri-dark='file:///home/adelgado/Firefox_wallpaper.png'
+picture-uri='file:////home/adelgado/wallpaper.png'
+picture-uri-dark='file:////home/adelgado/wallpaper.png'
 primary-color='#30307171aeae'
 secondary-color='#000000'
 
@@ -64,7 +78,7 @@ show-weekdate=false
 
 [org/gnome/desktop/input-sources]
 sources=[('xkb', 'us')]
-xkb-options=['terminate:ctrl_alt_bksp']
+xkb-options=['terminate:ctrl_alt_bksp', 'lv3:ralt_switch']
 
 [org/gnome/desktop/interface]
 clock-show-date=true
@@ -83,7 +97,8 @@ monospace-font-name='JetBrainsMonoNL Nerd Font Propo 10'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center', 'ncspot', 'gnome-network-panel', 'firefox', 'thunderbird']
+application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center', 'ncspot', 'gnome-network-panel', 'firefox', 'thunderbird', 'org-gnome-evolution-alarm-notify', 'org-mozilla-thunderbird']
+show-in-lock-screen=false
 
 [org/gnome/desktop/notifications/application/firefox]
 application-id='firefox.desktop'
@@ -96,15 +111,23 @@ application-id='gnome-power-panel.desktop'
 
 [org/gnome/desktop/notifications/application/ncspot]
 application-id='ncspot.desktop'
+force-expanded=true
+show-banners=true
 
 [org/gnome/desktop/notifications/application/org-gnome-characters]
 application-id='org.gnome.Characters.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-evolution-alarm-notify]
+application-id='org.gnome.Evolution-alarm-notify.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-extensions-desktop]
 application-id='org.gnome.Extensions.desktop.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-nautilus]
 application-id='org.gnome.Nautilus.desktop'
+
+[org/gnome/desktop/notifications/application/org-mozilla-thunderbird]
+application-id='org.mozilla.Thunderbird.desktop'
 
 [org/gnome/desktop/notifications/application/rog-control-center]
 application-id='rog-control-center.desktop'
@@ -122,8 +145,10 @@ two-finger-scrolling-enabled=true
 [org/gnome/desktop/privacy]
 disable-camera=true
 disable-microphone=true
-old-files-age=uint32 30
-recent-files-max-age=-1
+old-files-age=uint32 7
+recent-files-max-age=1
+remove-old-temp-files=true
+remove-old-trash-files=true
 
 [org/gnome/desktop/screensaver]
 color-shading-type='solid'
@@ -156,8 +181,25 @@ ask-for-default=false
 is-maximized=false
 window-size=(1024, 768)
 
+[org/gnome/evince]
+document-directory=@ms 'file:///home/adelgado/Downloads'
+
+[org/gnome/evince/default]
+window-ratio=(1.6904761904761905, 1.6254578754578752)
+
 [org/gnome/evolution-data-server]
 migrated=true
+
+[org/gnome/evolution-data-server/calendar]
+notify-window-height=281
+notify-window-paned-position=73
+notify-window-width=200
+notify-window-x=26
+notify-window-y=23
+reminders-past=@as []
+
+[org/gnome/evolution]
+default-address-book='97c3b30b5f411515ef2619d9e80a8d544e624636'
 
 [org/gnome/mutter]
 center-new-windows=true
@@ -179,6 +221,7 @@ search-view='list-view'
 
 [org/gnome/nautilus/window-state]
 initial-size=(890, 550)
+maximized=false
 
 [org/gnome/settings-daemon/plugins/media-keys]
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']
@@ -187,7 +230,7 @@ www=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>Return'
-command='kitty'
+command='alacritty'
 name='Terminal'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
@@ -221,7 +264,7 @@ disable-user-extensions=false
 disabled-extensions=['places-menu@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'forge@jmmaranan.com', 'dash-to-dock@micxgx.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']
 enabled-extensions=['native-window-placement@gnome-shell-extensions.gcampax.github.com', 'no-overview@fthx', 'AlphabeticalAppGrid@stuarthayhurst', 'just-perfection-desktop@just-perfection', 'unite@hardpixel.eu', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'tophat@fflewddur.github.io', 'supergfxctl-gex@asus-linux.org', 'activities-filled-pill@verdre', 'rounded-window-corners@yilozt']
 favorite-apps=['org.gnome.Nautilus.desktop']
-last-selected-power-profile='power-saver'
+last-selected-power-profile='performance'
 welcome-dialog-last-shown-version='44.2'
 
 [org/gnome/shell/app-switcher]
@@ -367,9 +410,9 @@ locations=[<(uint32 2, <('San Diego', 'KSAN', true, [(0.57130928801703362, -2.04
 locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>]
 
 [org/gnome/software]
-check-timestamp=int64 1694140883
+check-timestamp=int64 1696793977
 first-run=false
-flatpak-purge-timestamp=int64 1693886464
+flatpak-purge-timestamp=int64 1696814471
 
 [org/gnome/tweaks]
 show-extensions-notice=false
@@ -386,7 +429,7 @@ sort-directories-first=false
 sort-order='ascending'
 type-format='category'
 view-type='list'
-window-size=(857, 327)
+window-size=(857, 375)
 
 [org/gtk/settings/color-chooser]
 selected-color=(true, 0.75294117647058822, 0.38039215686274508, 0.79607843137254897, 1.0)
@@ -404,3 +447,51 @@ sort-order='ascending'
 type-format='category'
 window-position=(26, 23)
 window-size=(1203, 902)
+
+[org/virt-manager/virt-manager]
+manager-window-height=550
+manager-window-width=550
+xmleditor-enabled=true
+
+[org/virt-manager/virt-manager/confirm]
+delete-storage=false
+removedev=true
+unapplied-dev=true
+
+[org/virt-manager/virt-manager/connections]
+autoconnect=['qemu:///system']
+uris=['qemu:///system']
+
+[org/virt-manager/virt-manager/details]
+show-toolbar=true
+
+[org/virt-manager/virt-manager/new-vm]
+graphics-type='system'
+
+[org/virt-manager/virt-manager/paths]
+image-default='/home/adelgado/Downloads'
+
+[org/virt-manager/virt-manager/vmlist-fields]
+disk-usage=false
+network-traffic=false
+
+[org/virt-manager/virt-manager/vms/2a916f3cc62c45a783590f576dad965b]
+autoconnect=1
+scaling=1
+vm-window-size=(1704, 1028)
+
+[org/virt-manager/virt-manager/vms/37fd35ea63a34f6e8f1b264df4766a64]
+autoconnect=1
+scaling=1
+vm-window-size=(1280, 869)
+
+[org/virt-manager/virt-manager/vms/5a1036d240a74ad6874dc8985fd5c4a8]
+autoconnect=1
+resize-guest=1
+scaling=2
+vm-window-size=(1704, 1028)
+
+[org/virt-manager/virt-manager/vms/e6b2f7e47f744eeaaf98c18cc7174592]
+autoconnect=1
+scaling=1
+vm-window-size=(1024, 810)
