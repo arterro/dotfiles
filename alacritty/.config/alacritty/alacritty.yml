@@ -28,7 +28,9 @@ colors:
     cyan: "0x8FBCBB"
     white: "0xECEFF4"
 
+
 window:
+  startup_mode: Maximized
   padding:
     x: 5
     y: 10

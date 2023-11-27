@@ -20,6 +20,11 @@ last-save-directory='file:///home/adelgado/Documents'
 [org/gnome/Weather]
 locations=[<(uint32 2, <('San Diego', 'KSAN', true, [(0.57130928801703362, -2.045230154748896)], [(0.57099020692318392, -2.0447798423485892)])>)>]
 
+[org/gnome/baobab/ui]
+active-chart='treemap'
+is-maximized=false
+window-size=(960, 600)
+
 [org/gnome/calculator]
 accuracy=9
 angle-units='degrees'
@@ -32,6 +37,8 @@ source-currency=''
 source-units='degree'
 target-currency=''
 target-units='radian'
+window-maximized=false
+window-size=(360, 504)
 word-size=64
 
 [org/gnome/calendar]
@@ -40,7 +47,7 @@ window-maximized=true
 window-size=(768, 600)
 
 [org/gnome/clocks]
-world-clocks=[{'location': <(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>}]
+world-clocks=[{'location': <(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>}, {'location': <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>}]
 
 [org/gnome/clocks/state/window]
 maximized=false
@@ -48,8 +55,8 @@ panel-id='world'
 size=(870, 690)
 
 [org/gnome/control-center]
-last-panel='keyboard'
-window-state=(1310, 931, false)
+last-panel='display'
+window-state=(1024, 768, false)
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
@@ -97,7 +104,7 @@ monospace-font-name='JetBrainsMonoNL Nerd Font Propo 10'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center', 'ncspot', 'gnome-network-panel', 'firefox', 'thunderbird', 'org-gnome-evolution-alarm-notify', 'org-mozilla-thunderbird']
+application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center', 'ncspot', 'gnome-network-panel', 'firefox', 'thunderbird', 'org-gnome-evolution-alarm-notify', 'org-mozilla-thunderbird', 'org-gnome-baobab']
 show-in-lock-screen=false
 
 [org/gnome/desktop/notifications/application/firefox]
@@ -114,6 +121,9 @@ application-id='ncspot.desktop'
 force-expanded=true
 show-banners=true
 
+[org/gnome/desktop/notifications/application/org-gnome-baobab]
+application-id='org.gnome.baobab.desktop'
+
 [org/gnome/desktop/notifications/application/org-gnome-characters]
 application-id='org.gnome.Characters.desktop'
 
@@ -128,6 +138,8 @@ application-id='org.gnome.Nautilus.desktop'
 
 [org/gnome/desktop/notifications/application/org-mozilla-thunderbird]
 application-id='org.mozilla.Thunderbird.desktop'
+enable-sound-alerts=true
+show-banners=true
 
 [org/gnome/desktop/notifications/application/rog-control-center]
 application-id='rog-control-center.desktop'
@@ -183,9 +195,20 @@ window-size=(1024, 768)
 
 [org/gnome/evince]
 document-directory=@ms 'file:///home/adelgado/Downloads'
+pictures-directory=@ms 'file:///home/adelgado/Downloads'
 
 [org/gnome/evince/default]
-window-ratio=(1.6904761904761905, 1.6254578754578752)
+continuous=true
+dual-page=false
+dual-page-odd-left=true
+enable-spellchecking=true
+fullscreen=false
+inverted-colors=false
+show-sidebar=true
+sidebar-page='thumbnails'
+sidebar-size=132
+sizing-mode='automatic'
+window-ratio=(1.6906565656565657, 1.6258169934640523)
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -200,6 +223,47 @@ reminders-past=@as []
 
 [org/gnome/evolution]
 default-address-book='97c3b30b5f411515ef2619d9e80a8d544e624636'
+version='3.50.1'
+
+[org/gnome/evolution/addressbook]
+primary-addressbook='b93e9e72505b3254416949cba53fd56688d174fd'
+
+[org/gnome/evolution/calendar]
+allow-direct-summary-edit=false
+confirm-purge=true
+date-navigator-pane-position=182
+primary-calendar='dec274d8c262864be5d968368b8787ccdffd7c5f'
+primary-memos='system-memo-list'
+primary-tasks='system-task-list'
+tag-vpane-position=0.0008077544426494665
+time-divisions=30
+week-start-day-name='monday'
+work-day-friday=true
+work-day-monday=true
+work-day-saturday=false
+work-day-sunday=false
+work-day-thursday=true
+work-day-tuesday=true
+work-day-wednesday=true
+
+[org/gnome/evolution/mail]
+browser-close-on-reply-policy='ask'
+forward-style-name='attached'
+image-loading-policy='never'
+paned-size=1259154
+prompt-check-if-default-mailer=false
+reply-style-name='quoted'
+to-do-bar-width=1186788
+
+[org/gnome/evolution/shell]
+default-component-id='calendar'
+
+[org/gnome/evolution/shell/window]
+height=1364
+maximized=true
+width=1280
+x=0
+y=0
 
 [org/gnome/mutter]
 center-new-windows=true
@@ -220,8 +284,12 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
-initial-size=(890, 550)
+initial-size=(1119, 759)
 maximized=false
+
+[org/gnome/nm-applet/eap/3166e463-94bf-4fe1-afad-a8fadc0cdb47]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
 
 [org/gnome/settings-daemon/plugins/media-keys]
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']
@@ -325,7 +393,7 @@ workspace-active-tile-toggle=['<Shift><Super>w']
 
 [org/gnome/shell/extensions/just-perfection]
 accessibility-menu=true
-activities-button=false
+activities-button=true
 activities-button-icon-monochrome=true
 activities-button-label=true
 alt-tab-window-preview-size=0
@@ -407,15 +475,19 @@ automatic-location=true
 locations=[<(uint32 2, <('San Diego', 'KSAN', true, [(0.57130928801703362, -2.045230154748896)], [(0.57099020692318392, -2.0447798423485892)])>)>]
 
 [org/gnome/shell/world-clocks]
-locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>]
+locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>, <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>]
 
 [org/gnome/software]
-check-timestamp=int64 1696793977
+check-timestamp=int64 1701114391
 first-run=false
-flatpak-purge-timestamp=int64 1696814471
+flatpak-purge-timestamp=int64 1701065120
 
 [org/gnome/tweaks]
 show-extensions-notice=false
+
+[org/gtk/gtk4/settings/color-chooser]
+custom-colors=[(0.88235294818878174, 0.54509806632995605, 0.72156864404678345, 1.0), (0.75, 0.25, 0.25, 1.0)]
+selected-color=(true, 0.75294119119644165, 0.3803921639919281, 0.79607844352722168, 1.0)
 
 [org/gtk/gtk4/settings/file-chooser]
 date-format='regular'
@@ -441,9 +513,9 @@ show-hidden=false
 show-size-column=true
 show-type-column=true
 sidebar-width=157
-sort-column='name'
+sort-column='modified'
 sort-directories-first=false
-sort-order='ascending'
+sort-order='descending'
 type-format='category'
 window-position=(26, 23)
 window-size=(1203, 902)
