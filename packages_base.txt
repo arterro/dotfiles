@@ -17,6 +17,7 @@ kubectl
 libvirt
 ls
 man-db
+mkinitcpio-firmware
 mpc
 mpd
 ncmpcpp
