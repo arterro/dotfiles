@@ -1,5 +1,5 @@
 [com/mattjakeman/ExtensionManager]
-last-used-version='0.4.2'
+last-used-version='0.4.3'
 
 [org/freedesktop/folks]
 primary-store='eds:97c3b30b5f411515ef2619d9e80a8d544e624636'
@@ -31,14 +31,15 @@ angle-units='degrees'
 base=10
 button-mode='basic'
 number-format='automatic'
+refresh-interval=604800
 show-thousands=false
 show-zeroes=false
-source-currency=''
+source-currency='DZD'
 source-units='degree'
-target-currency=''
-target-units='radian'
+target-currency='DZD'
+target-units='degree'
 window-maximized=false
-window-size=(360, 504)
+window-size=(360, 582)
 word-size=64
 
 [org/gnome/calendar]
@@ -55,7 +56,7 @@ panel-id='world'
 size=(870, 690)
 
 [org/gnome/control-center]
-last-panel='display'
+last-panel='power'
 window-state=(1024, 768, false)
 
 [org/gnome/desktop/app-folders]
@@ -104,7 +105,7 @@ monospace-font-name='JetBrainsMonoNL Nerd Font Propo 10'
 show-battery-percentage=true
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center', 'ncspot', 'gnome-network-panel', 'firefox', 'thunderbird', 'org-gnome-evolution-alarm-notify', 'org-mozilla-thunderbird', 'org-gnome-baobab']
+application-children=['gnome-power-panel', 'org-gnome-characters', 'org-gnome-nautilus', 'org-gnome-extensions-desktop', 'rog-control-center', 'ncspot', 'gnome-network-panel', 'firefox', 'thunderbird', 'org-gnome-evolution-alarm-notify', 'org-mozilla-thunderbird', 'org-gnome-baobab', 'signal-desktop', 'org-gnome-console']
 show-in-lock-screen=false
 
 [org/gnome/desktop/notifications/application/firefox]
@@ -127,6 +128,9 @@ application-id='org.gnome.baobab.desktop'
 [org/gnome/desktop/notifications/application/org-gnome-characters]
 application-id='org.gnome.Characters.desktop'
 
+[org/gnome/desktop/notifications/application/org-gnome-console]
+application-id='org.gnome.Console.desktop'
+
 [org/gnome/desktop/notifications/application/org-gnome-evolution-alarm-notify]
 application-id='org.gnome.Evolution-alarm-notify.desktop'
 
@@ -143,6 +147,9 @@ show-banners=true
 
 [org/gnome/desktop/notifications/application/rog-control-center]
 application-id='rog-control-center.desktop'
+
+[org/gnome/desktop/notifications/application/signal-desktop]
+application-id='signal-desktop.desktop'
 
 [org/gnome/desktop/notifications/application/thunderbird]
 application-id='thunderbird.desktop'
@@ -478,9 +485,9 @@ locations=[<(uint32 2, <('San Diego', 'KSAN', true, [(0.57130928801703362, -2.04
 locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>, <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>]
 
 [org/gnome/software]
-check-timestamp=int64 1701114391
+check-timestamp=int64 1705595198
 first-run=false
-flatpak-purge-timestamp=int64 1701065120
+flatpak-purge-timestamp=int64 1705642375
 
 [org/gnome/tweaks]
 show-extensions-notice=false
