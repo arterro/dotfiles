@@ -87,7 +87,7 @@ function prunebranches() {
 #***
 # Rename branch local and remote
 #***
-function mvbranch() (
+function mvbranch() {
     if [[ -z $1 ]] ; then
         current_branch=$(git branch --show-current)
     else
@@ -116,8 +116,7 @@ function mvbranch() (
                 ;;
         esac
     done
-
-)
+}
 
 #***
 # Remove branch local and remote
@@ -130,4 +129,35 @@ function rmbranch() {
 
     git branch -d "$1"
     git push origin :"$1"
+}
+
+#***
+# Export encrypted GPG private key
+#***
+function egpg() {
+    if [[ -z $1 ]] ; then
+        printf "Please specify the GPG UID."
+        return 1
+    fi
+    
+    if [[ -z $2 ]] ; then
+        printf "Please specify output filename."
+        return 1
+    fi
+    
+    gpg --output pubkey.gpg --export ${1} && \
+    gpg --output - --export-secret-key ${1} | cat pubkey.gpg - | gpg --armor --output ${2} --symmetric --cipher-algo AES256 && \
+    rm -f ./pubkey.gpg 
+}
+
+#***
+# Import encrypted GPG private key with ultimate trust level
+#***
+function igpg() {
+    if [[ -z $1 ]] ; then
+        printf "Please specify filename."
+        return 1
+    fi
+
+    gpg --output - ${1} | gpg --import | (echo 5; echo y; echo save) | gpg --command-fd 0 --no-tty --no-greeting -q --edit-key - trust
 }
