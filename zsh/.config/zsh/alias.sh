@@ -1,4 +1,5 @@
 alias work='cd $WORK'
+alias projects='cd $WORK/projects'
 alias notes='cd $NOTES'
 alias dotfiles='cd $DOTFILES'
 
