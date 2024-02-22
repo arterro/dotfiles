@@ -1,5 +1,7 @@
+1password
 alacritty
 bind
+bitwarden
 bridge-utils
 cava
 direnv
@@ -37,6 +39,7 @@ ruby
 rust-analyzer
 rustup
 shellcheck
+sops
 stow
 terraform-ls
 thunderbird
