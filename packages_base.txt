@@ -4,6 +4,7 @@ bind
 bitwarden
 bridge-utils
 cava
+cloudflare-warp-bin
 direnv
 dnsmasq
 dockerfile-language-server

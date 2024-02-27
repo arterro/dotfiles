@@ -9,9 +9,10 @@
   "name": "Alphabetical App Grid",
   "settings-schema": "org.gnome.shell.extensions.alphabetical-app-grid",
   "shell-version": [
-    "45"
+    "45",
+    "46"
   ],
   "url": "https://github.com/stuarthayhurst/alphabetical-grid-extension",
   "uuid": "AlphabeticalAppGrid@stuarthayhurst",
-  "version": 38
+  "version": 39
 }
